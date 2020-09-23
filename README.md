@@ -5,7 +5,7 @@ Using weighted attributes can simplify game design and provide more natural and 
 
 This includes three components that work with the BD Utility Selector:
 
-- Task Score - This BD task provides the score for an activity to the BD Utility Selector based on the weights you assign to various attributes. The Utility Selector then runs the activity with the highest score.
+- Task Score - This BD task provides the score for an activity to the BD Utility Selector based on the weights you assign to various attributes. The Utility Selector then runs the activity with the highest score.  Any variable present in the BD Attribute Manager can be used as a component of the score for a task.
 - Anger - This Unity component updates the anger attribute of the Agent in the BD Attribute Manager.  Anger can be one of the weighted attributes for an Attack Player task.  Anger is increased when the agent is attacked.  The Attribute Manager can be configured to decrease anger over time.  The initial value for anger can be set to zero for a passive agent or to 100 for an aggresive agent.  
 - Distance - This Unity component determines if an object is visible, calculates the distance, and updates the Behavior Designer Attribute Manager.
 
