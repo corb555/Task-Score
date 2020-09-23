@@ -1,17 +1,17 @@
-# Utility-Theory
-Create utility scores for game development in Unity / Opsive Game Behavior Designer
+# Game Task Score
+These components are used to create task utility scores for game development in Unity and Opsive Game Behavior Designer.  The Utility Selector uses these scores to select which task to run.  Each task has a score based on the key attributes for that task with each weighted.  Using weighted attributes can simplify game design and provide more natural and intelligent behavior for an agent.
 
 # Overview
 
 This includes three components that work with the Opsive Behavior Designer Utility Selector:
 
-- Utility - This Behavior Designer task provides the score for an activity to the Behavior Designer Utility Selector based on the weights you assign to various attributes. The Utility Selector then runs the activity with the highest score.
+- Task Score - This Behavior Designer task provides the score for an activity to the Behavior Designer Utility Selector based on the weights you assign to various attributes. The Utility Selector then runs the activity with the highest score.
 - Anger - This Unity component updates the anger attribute of the object.  Anger is increased when the object is attacked and decreases over time.
 - Distance - This Unity component determines if an object is visible, calculates the distance, and updates the Behavior Designer Attribute Manager.
 
-# 1. Utility
+# 1. Task Score
 
-Utility is a task which is used in the Behior Designer view.
+Task Score is a Behavior Designer task which returns the score for a particular task group.  The Utility Selector will then run the task with the highest score.  The Task Score is placed on each task group and is configured with the key attributes for that task group and their weightings.  For example a task which retrieves a HealthPack would be configured with a high weighting for low health and a high weighting for a HealthPack being near.
 
 ### Parameters
 You can set a weighting from 0 to 1.0f for each parameter.  The returned score is the sum of each parameter’s weight times the parameter’s value.  All parameters are scaled from 0 to 100.0f.  To provide a consistent basis for scoring between activities, the sum of the weights should be equal to 1.0f for a high priority task, 0.9f for medium priority, and 0.8f for a low priority activity.
