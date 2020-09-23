@@ -1,17 +1,17 @@
 # Game Task Score
-These components are used to create task utility scores for game development in Unity and Opsive Game Behavior Designer.  The Utility Selector uses these scores to select which task to run.  Each task has a score based on the key attributes for that task with each weighted.  Using weighted attributes can simplify game design and provide more natural and intelligent behavior for an agent.
+These components can be used to create weighted task scores for the Opsive Game Behavior Designer (BD).  The BD Utility Selector can use these scores to select which task to run.  Each task has a score based on weighted attributes for that task.   For example a task which retrieves a HealthPack would be configured with a high weighting for low health and a high weighting for a HealthPack being near.  As the health rating gets worse, the retrieve HealthPack gets a higher rating and eventually becomes the highest rated option for the Utility Selector.  Using weighted attributes can simplify game design and provide more natural and intelligent behavior for an agent rather than having to create complicated trees of binary decisions.
 
 # Overview
 
-This includes three components that work with the Opsive Behavior Designer Utility Selector:
+This includes three components that work with the BD Utility Selector:
 
-- Task Score - This Behavior Designer task provides the score for an activity to the Behavior Designer Utility Selector based on the weights you assign to various attributes. The Utility Selector then runs the activity with the highest score.
-- Anger - This Unity component updates the anger attribute of the object.  Anger is increased when the object is attacked and decreases over time.
+- Task Score - This BD task provides the score for an activity to the BD Utility Selector based on the weights you assign to various attributes. The Utility Selector then runs the activity with the highest score.
+- Anger - This Unity component updates the anger attribute of the Agent in the BD Attribute Manager.  Anger can be one of the weighted attributes for an Attack Player task.  Anger is increased when the agent is attacked.  The Attribute Manager can be configured to decrease anger over time.  The initial value for anger can be set to zero for a passive agent or to 100 for an aggresive agent.  
 - Distance - This Unity component determines if an object is visible, calculates the distance, and updates the Behavior Designer Attribute Manager.
 
 # 1. Task Score
 
-Task Score is a Behavior Designer task which returns the score for a particular task group.  The Utility Selector will then run the task with the highest score.  The Task Score is placed on each task group and is configured with the key attributes for that task group and their weightings.  For example a task which retrieves a HealthPack would be configured with a high weighting for low health and a high weighting for a HealthPack being near.
+Task Score is a Behavior Designer task which returns the score for a particular task group.  The Utility Selector will then run the task with the highest score.  
 
 ### Parameters
 You can set a weighting from 0 to 1.0f for each parameter.  The returned score is the sum of each parameter’s weight times the parameter’s value.  All parameters are scaled from 0 to 100.0f.  To provide a consistent basis for scoring between activities, the sum of the weights should be equal to 1.0f for a high priority task, 0.9f for medium priority, and 0.8f for a low priority activity.
