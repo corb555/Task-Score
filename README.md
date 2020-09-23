@@ -7,14 +7,14 @@ This includes three components that work with the BD Utility Selector:
 
 - Task Score - This BD task provides the score for an activity to the BD Utility Selector based on the weights you assign to various attributes. The Utility Selector then runs the activity with the highest score.  Any variable present in the BD Attribute Manager can be used as a component of the score for a task.
 - Anger - This Unity component updates the anger attribute of the Agent in the BD Attribute Manager.  Anger can be one of the weighted attributes for an Attack Player task.  Anger is increased when the agent is attacked.  The Attribute Manager can be configured to decrease anger over time.  The initial value for anger can be set to zero for a passive agent or to 100 for an aggresive agent.  
-- Distance - This Unity component determines if an object is visible, calculates the distance, and updates the Behavior Designer Attribute Manager.
+- Distance - This Unity component determines if an object is visible, calculates the distance, and updates the Behavior Designer Attribute Manager. This offers a few features compared to standard distance calculations. Rather than having a strict field of view cut-off, this determines visibility based on a combination of angle  and distance.  An object directly in front of the agent will be visible further away.  The further to the side the object is, the lower the distance it will be visible.
 
 # 1. Task Score
 
 Task Score is a Behavior Designer task which returns the score for a particular task group.  The Utility Selector will then run the task with the highest score.  
 
 ### Parameters
-You can set a weighting from 0 to 1.0f for each parameter.  The returned score is the sum of each parameter’s weight times the parameter’s value.  All parameters are scaled from 0 to 100.0f.  To provide a consistent basis for scoring between activities, the sum of the weights should be equal to 1.0f for a high priority task, 0.9f for medium priority, and 0.8f for a low priority activity.
+You can set a weighting from 0 to 1.0f for each attribute.  The returned score is the sum of each attribute’s weight times the attribute’s value.  All attribute are scaled from 0 to 100.0f.  To provide a consistent basis for scoring between activities, the sum of the weights should be equal to 1.0f for a high priority task, 0.9f for medium priority, and 0.8f for a low priority activity.
 
 ### Sample Parameters
 Target Close:  100=close, 1=far, 0=not visible. Value is 100 - distance (capped at 99).  The target can be healthpack, weapon, ammo, player, etc.
@@ -30,10 +30,9 @@ The Utility Selector chooses the task with the highest values, so sometimes you 
 
 ### Returns
 The weighted value is returned to the Utility Selector with the GetUtility method
-DemoAgent.Health, DemoAgent.Ammo, 
 
 ### Setup
-Anger - If you are going to use Anger, you need to add an Anger attribute to your AI’s Attribute Manager with min/max of 0,100 and set auto decrement (if you choose) and add the Anger component to your AI.  Anger will be incremented when the AI takes damage.
+In the Behior Designer edit window, add the Task Score task for each activity.  Connect it to the Utility Selector.  In the BD Inspection window, add the Attributes you want for this task and add the weight for each.  The attributes must use the same name as in the Attribute Manager (names are case sensitive).
 
 ### Example
 
@@ -49,4 +48,10 @@ Weight set to:  Health= 0.5, Target Close(Player)=0.4
 Score= (20 * 0.5) + (70 * 0.4) = 38  (Note that the sum of weights is 0.9, so if everything is equal (equal distance to targets and health=50), the Seek Healthpack will be selected since it has total weights of 1.0.)
 
 # 2. Anger
+
+### Setup
+Anger - Add the Anger component to your Agent.  Add an Anger attribute to your AI’s Attribute Manager with min/max of 0,100 and set auto decrement (if you choose).  Anger will be incremented when the AI takes damage.
+
+# 3. Distance
+
 
