@@ -1,20 +1,20 @@
-# Game Task Score
-Using weighted attribute task scores can provide more natural and intelligent behavior for an agent's decisions rather than having a complicated tree of binary decisions. Task Score provides the score for an activity to the Behavior Designer (BD) Utility Selector based on the weights you assign to various attributes. The BD Utility Selector then runs the activity with the highest score.   For example, a task which retrieves a HealthPack would be configured with a high weighting for low health and a high weighting for a HealthPack being nearby.  As the health rating gets worse, the Retrieve HealthPack task gets a higher rating and eventually becomes the highest rated task for the Utility Selector.  
+# Task Score
+Task Score provides the score for an activity to the Behavior Designer (BD) Utility Selector based on the weights you assign to various attributes. The BD Utility Selector then runs the activity with the highest score.   For example, a Retrieve HealthPack task could be configured with a high weighting for low health and a high weighting for a HealthPack being nearby.  As the health rating gets worse, the Retrieve HealthPack task gets a higher rating and eventually becomes the highest rated task for the Utility Selector.  Using weighted attribute task scores can provide more natural and intelligent behavior for an agent's decisions rather than having a tree of binary decisions. 
 
 # Overview of Components
 
 These components work with the BD Utility Selector:
 
-- *Task Score* - This BD task provides the score for an activity to the BD Utility Selector based on the weights you assign to various attributes. The Utility Selector then runs the activity with the highest score.  Any variable present in the BD Attribute Manager can be used as a component of the score for a task.
+- *Task Score* - This BD task provides the score for an activity to the BD Utility Selector based on the weights you assign to various attributes. The Utility Selector then runs the activity with the highest score.  Any float Behavior Designer global variable can be used as a component of the score for a task.
 - *Anger* - This Unity component updates the anger attribute of the Agent in the BD Attribute Manager.  Anger can be one of the weighted attributes for an Attack Player task.  Anger is increased when the agent is attacked.  The Attribute Manager can be configured to decrease anger over time.  The initial value for anger can range from zero for a passive agent to 100 for an aggresive agent.  
-- *Distance* - This Unity component determines if an object is visible, calculates the distance, and updates the BD Attribute Manager. This offers a few enhancements beyond standard distance calculations. Rather than having a binary cut-off based on field of view, this determines visibility based on a combination of angle and distance.  The further to the side the object is, the lower the distance it will be visible, while an object directly in front of the agent will be visible further away. 
+- *Distance* - This Unity component determines if an object is visible, calculates the distance, and updates a Behavior Designer global variable. This offers a few enhancements beyond standard distance calculations. Rather than having a  cut-off based on in or out of field of view, this determines visibility based on a combination of angle and distance.  The further to the side the object is, the lower the distance it will be visible, while an object directly in front of the agent will be visible further away. 
 
 # 1. Task Score Component
 
 Task Score is a Behavior Designer task which returns the score for a particular task group.  The Utility Selector will then run the task with the highest score.  
 
 ### Parameters
-Any attribute in BD Attibute Manager can be a component of the task score.  You can set a weighting from 0 to 1.0f for each attribute.  The  score is the sum of each attribute’s weight times the attribute’s value.  All attribute are scaled from 0 to 100.0f.  To provide a consistent basis for scoring between activities, the sum of the weights should be equal to 1.0f for a high priority task, 0.9f for medium priority, and 0.8f for a low priority activity.
+Any float Behavior designer global variable can be a component of the task score.  All attributes should be scaled from 0 to 100.0f.  You can set a weighting from 0 to 1.0f for each attribute.  The  score is the sum of each attribute’s weight times the attribute’s value.    To provide a consistent basis for scoring between activities, the sum of the weights should be equal to 1.0f for a high priority task, 0.9f for medium priority, and 0.8f for a low priority activity.
 
 ### Reversed Scale
 The Utility Selector chooses the task with the highest values, so sometimes you need to reverse the scale for  a parameter to have it increase utility.  For example, as a player’s health gets lower, you might want to give a higher result for getting a healthpack.  You can do this by assigning a negative weight.  This is handled as a special case that reverses the scale (100-value) and applies the absolute value of the weight. 
@@ -29,7 +29,7 @@ The Utility Selector chooses the task with the highest values, so sometimes you 
 *Ammo* - 100=full, 0=empty  
 
 ### Setup
-In the Behior Designer edit window, add the Task Score task for each activity under Utility Selector.  Connect it to the Utility Selector.  In the BD Inspection window, add the Attributes you want for this task and add the weight for each attribute.  The attributes must use the same name as in the Attribute Manager (names are case sensitive).
+In the Behavior Designer edit window, add a Task Score Task for each activity under Utility Selector and connect it to the Utility Selector.  In the BD Inspection window, add the Global Variables you want for this task and add the weight for each attribute.  
 
 ### Example
 
@@ -46,10 +46,10 @@ Score= (20 * 0.5) + (70 * 0.4) = 38  (Note that the sum of weights is 0.9, so if
 
 # 2. Anger Component
 
-Anger is a component that reduces the anger attribute when the agent receives damage.
+Anger is a component that reduces the anger attribute when the agent receives damage and updates the Anger attribute in Attribute Manager.
 
 ### Setup
-Anger - Add the Anger component to your Agent.  Add an Anger attribute to your AI’s Attribute Manager with min/max of 0,100 and set auto decrement (if you choose).  Anger will be incremented when the AI takes damage.
+Anger - Add the Anger component to your Agent.  Add an Anger attribute to your agent’s Attribute Manager with min/max of 0,100 and set auto decrement (if you choose).  Anger will be incremented when the agent takes damage.
 
 # 3. Distance Component
 
