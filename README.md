@@ -29,7 +29,9 @@ The Utility Selector chooses the task with the highest values, so sometimes you 
 *Ammo* - 100=full, 0=empty  
 
 ### Setup
-In the Behavior Designer edit window, add a Task Score Task for each activity under Utility Selector and connect it to the Utility Selector.  In the BD Inspection window, add the Global Variables you want for this task and add the weight for each attribute.  
+1. In the Behavior Designer edit window, add a Task Score Task for each activity under Utility Selector and connect it to the Utility Selector with the actions connected below it.  
+1. In the BD Variables tab, add the Global Variables you want for your project (potentially the items in Sample Parameters above).  
+1. In the BD Inspection window for each Task Score task, add the Global Variables you want for this task and add the weight for each variable.  
 
 ### Example
 
