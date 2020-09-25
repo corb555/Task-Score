@@ -1,5 +1,5 @@
 # Task Score
-Task Score provides the score for an activity to the Behavior Designer (BD) Utility Selector based on the weights you assign to various attributes. The BD Utility Selector then runs the activity with the highest score.   For example, a Retrieve HealthPack task could be configured with a high weighting for low health and a high weighting for a HealthPack being nearby.  As the health rating gets worse, the Retrieve HealthPack task gets a higher rating and eventually becomes the highest rated task for the Utility Selector.  Using weighted attribute task scores can provide more natural and intelligent behavior for an agent's decisions rather than having a tree of binary decisions. 
+Task Score provides the score for an activity to the Behavior Designer (BD) Utility Selector based on the weights you assign to  attributes. The BD Utility Selector then runs the activity with the highest score.   For example, a Retrieve HealthPack task could be configured with a high weighting for low health and a high weighting for a HealthPack being nearby.  As the health rating gets worse, the Retrieve HealthPack task gets a higher score and eventually becomes the highest rated task for the Utility Selector.  Using weighted attribute task scores can provide more natural and intelligent behavior for an agent's decisions rather than having a tree of binary decisions. 
 
 # Overview of Components
 
@@ -7,7 +7,8 @@ These components work with the BD Utility Selector:
 
 - *Task Score* - This BD task provides the score for an activity to the BD Utility Selector based on the weights you assign to various attributes. The Utility Selector then runs the activity with the highest score.  Any float Behavior Designer global variable can be used as a component of the score for a task.
 - *Anger* - This Unity component updates the anger attribute of the Agent in the BD Attribute Manager.  Anger can be one of the weighted attributes for an Attack Player task.  Anger is increased when the agent is attacked.  The Attribute Manager can be configured to decrease anger over time.  The initial value for anger can range from zero for a passive agent to 100 for an aggresive agent.  
-- *Distance* - This Unity component determines if an object is visible, calculates the distance, and updates a Behavior Designer global variable. This offers a few enhancements beyond standard distance calculations. Rather than having a  cut-off based on in or out of field of view, this determines visibility based on a combination of angle and distance.  The further to the side the object is, the lower the distance it will be visible, while an object directly in front of the agent will be visible further away. 
+- *Distance* - This Unity component determines if an object is visible, calculates the distance, and updates a Behavior Designer global variable. This offers a few enhancements beyond standard distance calculations. Rather than having a  cut-off based on in or out of field of view, this determines visibility based on a combination of angle and distance.  The further to the side the object is, the lower the distance it will be visible, while an object directly in front of the agent will be visible further away.  
+- *Map Variables* - This Unity component
 
 # 1. Task Score Component
 
@@ -53,6 +54,8 @@ Anger is a component that reduces the anger attribute when the agent receives da
 ### Setup
 Anger - Add the Anger component to your Agent.  Add an Anger attribute to your agent’s Attribute Manager with min/max of 0,100 and set auto decrement (if you choose).  Anger will be incremented when the agent takes damage.
 
-# 3. Distance Component
+# 3. Distance Component  
+
+# 4. Map Variables Component
 
 
