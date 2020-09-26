@@ -22,7 +22,7 @@ The Utility Selector chooses the task with the highest values, so sometimes you 
 
 ### Sample Parameters
 *Target Close* -  100=close, 1=far, 0=not visible. Value is 100 - distance (capped at 99).  The target can be healthpack, weapon, ammo, player, etc.  
-*Far Targets* -  100=None found, 99=All far, 0=All near.  Average distance to all Targets.  The higher this value, the more useful, patrol/wander is.  
+*Explore* -  Increases if no valuable targets have been found.  100=None found, 99=Useful targets are far, 0=Useful targets are near.  Value = (avg(distance) + min(distance))/2  The higher this value, the more useful exploring is.  
 *Target Health* - 100=healthy, 0=dead  
 *Health* - 100=healthy, 0=dead  
 *Anger* - 100=angry, 0=calm.  Damage to the agent increases anger.  Time decreases anger (based on the rate set in Attribute Manager)  
