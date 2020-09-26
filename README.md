@@ -25,7 +25,7 @@ The Utility Selector chooses the task with the highest values, so sometimes you 
 *Far Targets* -  100=None found, 99=All far, 0=All near.  Average distance to all Targets.  The higher this value, the more useful, patrol/wander is.  
 *Target Health* - 100=healthy, 0=dead  
 *Health* - 100=healthy, 0=dead  
-*Anger* - 100=angry, 0=calm.  Damage to AI increases anger.  Time decreases anger (based on the rate set in Attribute Manager)  
+*Anger* - 100=angry, 0=calm.  Damage to the agent increases anger.  Time decreases anger (based on the rate set in Attribute Manager)  
 *Weapons* - 0 none, 10 club, 20 knife, 30 sword, 40 pistol, 50 shotgun, 60 automatic   
 *Ammo* - 100=full, 0=empty  
 
@@ -51,12 +51,16 @@ Score= (20 * 0.5) + (70 * 0.4) = 38  (Note that the sum of weights is 0.9, so if
 
 # 2. Anger Component
 
-Anger is a component that reduces the anger attribute when the agent receives damage and updates the Anger attribute in Attribute Manager.
+Anger is a component that increases the anger attribute when the agent receives damage and updates the Anger attribute in Attribute Manager.
 
 ### Setup
-Anger - Add the Anger component to your Agent.  Add an Anger attribute to your agent’s Attribute Manager with min/max of 0,100 and set auto decrement (if you choose).  Anger will be incremented when the agent takes damage.
+Anger - Add the Anger component to your Agent.  Add an Anger attribute to your agent’s Attribute Manager with min/max of 0,100 and set auto decrement (if you choose).  Set the initial value to zero for a passive agent and to 100 for an aggresive agent or any value in between.  
 
 # 3. Distance Component  
+The distance component has a list of objects and their types.  It will determine if an object is visible by the agent and if so will calculate the distance.  An object type, such as HealhPack, can have multiple objects, and the distance will be the closest visible of that type.  Any distance over 99 is capped at 99.  100 is used to indicate not visible.
+
+### Field of Vision
+Rather than having a fixed cutoff for whether an item is in or out of field of vision, there is a table with distance viewable based on angle.  Objects toward the center can be seen further off, and off to the side must be closer to be considered visible.
 
 # 4. Behavior Variables Component
 
