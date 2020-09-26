@@ -8,7 +8,7 @@ These components work with the Opsive Behavior Utility Selector:
 - *Task Score* - This BD task provides the score for an activity to the BD Utility Selector based on the weights you assign to various attributes. The Utility Selector then runs the activity with the highest score.  Any float Behavior Designer global variable can be used as a component of the score for a task.
 - *Anger* - This Unity component increases the anger attribute of the Agent in the BD Attribute Manager when the agent is attacked. The Attribute Manager can be configured to decrease anger over time.  The initial value for anger in the Attribute Manager can range from zero for a passive agent to 100 for an aggresive agent.  
 - *Distance* - This Unity component determines if an object is visible, calculates the distance, and updates a Behavior Designer global variable. Rather than having a cut-off based on in or out of field of view, this determines visibility based on a combination of angle and distance.  The further to the side the object is, the lower the distance it is visible, while an object directly in front of the agent is visible further away.  
-- *Behavior Variables* - This Unity component updates variables in Behavior Designer such as Ammo, Weapon, Health, and Anger.
+- *Behavior Variables* - This Unity component makes it easy to access variables in Behavior Designer such as Ammo, Weapon, Health, and Anger.
 
 # 1. Task Score Component
 
@@ -62,7 +62,8 @@ The distance component has a list of objects and their types (healthpack, player
 ### Field of Vision
 Rather than having a fixed cutoff for whether an item is in or out of field of vision, there is a table with distance viewable based on angle.  Objects toward the center can be seen further off, and off to the side must be closer to be considered visible.
 
-# 4. Behavior Variables Component
+# 4. Behavior Variables Component  
+This Unity component makes it easy to access variables in Behavior Designer such as Ammo, Weapon, Health, and Anger.  All variables are provided as floats scaled from 0 to 100.0f.
 
 ### Setup  
 Add the Behavior Variables component to your agent.
