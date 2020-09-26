@@ -57,7 +57,7 @@ Anger is a component that increases the anger attribute when the agent receives 
 Anger - Add the Anger component to your Agent.  Add an Anger attribute to your agent’s Attribute Manager with min/max of 0,100 and set auto decrement (if you choose).  Set the initial value to zero for a passive agent and to 100 for an aggresive agent or any value in between.  
 
 # 3. Distance Component  
-The distance component has a list of objects and their types.  It will determine if an object is visible by the agent and if so will calculate the distance.  An object type, such as HealhPack, can have multiple objects, and the distance will be the closest visible of that type.  Any distance over 99 is capped at 99.  100 is used to indicate not visible.
+The distance component has a list of objects and their types (healthpack, player, ammo, etc).  It will determine if an object is visible by the agent and if so will calculate the distance.  An object type, such as HealhPack, can have multiple objects, and the distance value will be for the closest visible object of that type.  Any distance over 99 is capped at 99.  100 is used to indicate not visible.
 
 ### Field of Vision
 Rather than having a fixed cutoff for whether an item is in or out of field of vision, there is a table with distance viewable based on angle.  Objects toward the center can be seen further off, and off to the side must be closer to be considered visible.
