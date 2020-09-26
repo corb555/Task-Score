@@ -32,7 +32,9 @@ The Utility Selector chooses the task with the highest values, so sometimes you 
 ### Setup
 1. In the Behavior Designer edit window, add a Task Score Task for each activity under Utility Selector and connect it to the Utility Selector with the actions connected below it.  
 1. In the BD Variables tab, add the Global Variables you want for your project (potentially the items in Sample Parameters above).  
-1. In the BD Inspection window for each Task Score task, add the Global Variables you want for this task and add the weight for each variable.  
+1. In the BD Inspection window for each Task Score task, add the Global Variables you want for this task and add the weight for each variable. 
+1. Setup Behavior Variables as described in that section.
+1. If you want to use Anger in your score, setup Anger as described in that section.
 
 ### Example
 
@@ -57,5 +59,8 @@ Anger - Add the Anger component to your Agent.  Add an Anger attribute to your a
 # 3. Distance Component  
 
 # 4. Behavior Variables Component
+
+### Setup  
+Add the Behavior Variables component to your agent.
 
 
