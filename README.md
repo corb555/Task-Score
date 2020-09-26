@@ -3,11 +3,11 @@ Task Score provides the score for an activity to the Behavior Designer (BD) Util
 
 # Overview of Components
 
-These components work with the BD Utility Selector:
+These components work with the Opsive Behavior Utility Selector:
 
 - *Task Score* - This BD task provides the score for an activity to the BD Utility Selector based on the weights you assign to various attributes. The Utility Selector then runs the activity with the highest score.  Any float Behavior Designer global variable can be used as a component of the score for a task.
-- *Anger* - This Unity component updates the anger attribute of the Agent in the BD Attribute Manager.  Anger can be one of the weighted attributes for an Attack Player task.  Anger is increased when the agent is attacked.  The Attribute Manager can be configured to decrease anger over time.  The initial value for anger can range from zero for a passive agent to 100 for an aggresive agent.  
-- *Distance* - This Unity component determines if an object is visible, calculates the distance, and updates a Behavior Designer global variable. This offers a few enhancements beyond standard distance calculations. Rather than having a  cut-off based on in or out of field of view, this determines visibility based on a combination of angle and distance.  The further to the side the object is, the lower the distance it will be visible, while an object directly in front of the agent will be visible further away.  
+- *Anger* - This Unity component increases the anger attribute of the Agent in the BD Attribute Manager when the agent is attacked. The Attribute Manager can be configured to decrease anger over time.  The initial value for anger in the Attribute Manager can range from zero for a passive agent to 100 for an aggresive agent.  
+- *Distance* - This Unity component determines if an object is visible, calculates the distance, and updates a Behavior Designer global variable. This offers a few enhancements versus standard distance calculations. Rather than having a cut-off based on in or out of field of view, this determines visibility based on a combination of angle and distance.  The further to the side the object is, the lower the distance it will be visible, while an object directly in front of the agent will be visible further away.  
 - *Behavior Variables* - This Unity component updates variables in Behavior Designer such as Ammo, Weapon, Health, and Anger.
 
 # 1. Task Score Component
