@@ -7,7 +7,7 @@ These components work with the Opsive Behavior Utility Selector:
 
 - *Task Score* - This BD task provides the score for an activity to the BD Utility Selector based on the weights you assign to various attributes. The Utility Selector then runs the activity with the highest score.  Any float Behavior Designer global variable can be used as a component of the score for a task.
 - *Anger* - This component increases the anger attribute of the Agent in the BD Attribute Manager when the agent is attacked. The Attribute Manager can be configured to decrease anger over time.  The initial value for anger in the Attribute Manager can range from zero for a passive agent to 100 for an aggresive agent.  
-- *Distance* - This component determines if key object types are visible, calculates their distance, and updates Behavior Designer global variables. Rather than having a cut-off based on in or out of field of view, this determines visibility based on a combination of angle and distance.  The further to the side the object is, the lower the distance it is visible, while an object directly in front of the agent is visible further away.  This also provides an Explore attribute which indicates that no useful objects have been found.
+- *Distance* - This component determines if key object types are visible, calculates their distance, and updates Behavior Designer global variables. Rather than having a cut-off based on in or out of field of view, this determines visibility based on a combination of angle and distance - the further to the side the object is, the lower the distance it is visible, while an object directly in front of the agent is visible further away.  This also provides an Explore attribute which indicates that no useful objects have been found.
 - *Behavior Variables* - This component makes it easy to access variables in Behavior Designer such as Ammo, Weapon, Health, Explore, Distances, and Anger.
 
 # 1. Task Score Component
@@ -21,7 +21,7 @@ Any float Behavior designer global variable can be a component of the task score
 Since the Utility Selector chooses the task with the highest values, you sometimes want to reverse the scale for  a parameter to have it increase utility.  For example, as a player’s health gets lower, you might want to give a higher result for getting a healthpack.  You can do this by assigning a negative weight.  This is handled as a special case that reverses the scale (100-value) and applies the absolute value of the weight. 
 
 ### Sample Parameters
-*Target Close* -  100=close, 1=far, 0=not visible. Value is 100 - distance (capped at 99).  The target can be healthpack, weapon, ammo, player, etc.  
+*Target Distance* -  0=close, 99=far, 100=not visible. The target can be healthpack, weapon, ammo, player, etc.  
 *Explore* -  Increases if no valuable targets have been found.  100=None found, 99=Useful targets are far, 0=Useful targets are near.  Value = (avg(distance) + min(distance))/2  The higher this value, the more useful exploring is.  
 *Target Health* - 100=healthy, 0=dead  
 *Health* - 100=healthy, 0=dead  
@@ -60,7 +60,12 @@ Anger is a component that increases the anger attribute when the agent receives 
 # 3. Distance Component  
 The distance component tracks the distance from the agent to all objects with the following tags using a BD Global Variable with the same name (with Distance appended):  
 *healthpack, player, ammo, weapon, ambush*  
-It will determine if each object is visible by the agent and if visible that object will be marked as "known". If an object is not static and has not been seen for 5 seconds, the "known" flag is cleared.  The component will update the distance to all currently  "known" objects and set the distance to 100 for all others.  An object tag can have multiple objects, and the distance value will be for the current closest object with that tag.  Any distance over 99 is capped at 99.  100 is used to indicate not visible.
+It will determine if each object is visible by the agent and if visible that object will be marked as "known". If an object is not static and has not been seen for 5 seconds, the "known" flag is cleared.  The component will calculate the distance to all currently  "known" objects (capped at 99 units).  The actual value stored is how close the item is, which is 100-distance.  An object tag can have multiple objects, and the value will be for the current closest object with that tag.   0=close, 99=far, 100=not visible.  
+  
+### Explore attribute  
+This also provides an *Explore attribute* which indicates that no useful objects have been found. It increases if no valuable targets have been found.  The higher this value, the more useful exploring is.  
+100=None found, 99=Useful targets are far, 0=Useful targets are near.  
+Value = (avg(distance) + min(distance))/2    
 
 ### Field of Vision
 Rather than having a fixed cutoff for whether an item is in or out of field of vision, objects toward the center can be seen further off, and off to the side must be closer to be considered visible.
