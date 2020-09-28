@@ -58,7 +58,7 @@ The anger component increases the anger attribute in Attribute Manager when the 
 1. Add an Anger attribute to your agent’s Attribute Manager with min/max of 0,100 and set auto decrement (if you choose).  Set the initial value to zero for a passive agent and to 100 for an aggresive agent or any value in between.  
 
 # 3. Distance Component  
-The distance component tracks the distance from the agent to all objects with the following tags using a BD Global Variable with the same name (with Distance appended):  
+The distance component tracks the distance from the agent to all objects with the following tags. It updates a BD Global Variable with the same name with Distance appended:  
 *healthpack, player, ammo, weapon, ambush*  
 It will determine if each object is visible by the agent and if visible that object will be marked as "known". If an object is not static and has not been seen for 5 seconds, the "known" flag is cleared.  The component will calculate the distance to all currently  "known" objects (capped at 99 units).  The actual value stored is how close the item is, which is 100-distance.  An object tag can have multiple objects, and the value will be for the current closest object with that tag.   0=close, 99=far, 100=not visible.  
   
