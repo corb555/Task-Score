@@ -54,7 +54,7 @@ Score= (20 * 0.5) + (70 * 0.4) = 38  (Note that the sum of weights is 0.9, so if
 The anger component increases the anger attribute in Attribute Manager when the agent receives damage.
 
 ### Setup
-1. Add the Anger component to your Agent.  
+1. Add the Anger component to your Agent.  Set the increment value for each damage attack in the Inspector.
 1. Add an Anger attribute to your agent’s Attribute Manager with min/max of 0,100 and set auto decrement (if you choose).  Set the initial value to zero for a passive agent and to 100 for an aggresive agent or any value in between.  
 
 # 3. Distance Component  
