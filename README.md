@@ -7,7 +7,7 @@ These components work with the Opsive Behavior Utility Selector:
 
 - *Task Score* - This BD task provides the score for an activity to the BD Utility Selector based on the weights you assign to various attributes. The Utility Selector then runs the activity with the highest score.  Any float Behavior Designer global variable can be used as a component of the score for a task.
 - *Anger* - This component increases the anger attribute of the Agent in the BD Attribute Manager when the agent is attacked. The Attribute Manager can be configured to decrease anger over time.  The initial value for anger in the Attribute Manager can range from zero for a passive agent to 100 for an aggresive agent.  
-- *Distance* - This component determines if an object is visible, calculates the distance, and updates a Behavior Designer global variable. Rather than having a cut-off based on in or out of field of view, this determines visibility based on a combination of angle and distance.  The further to the side the object is, the lower the distance it is visible, while an object directly in front of the agent is visible further away.  This also provides an Explore attribute which indicates that no useful objects have been found.
+- *Distance* - This component determines if key object types are visible, calculates their distance, and updates Behavior Designer global variables. Rather than having a cut-off based on in or out of field of view, this determines visibility based on a combination of angle and distance.  The further to the side the object is, the lower the distance it is visible, while an object directly in front of the agent is visible further away.  This also provides an Explore attribute which indicates that no useful objects have been found.
 - *Behavior Variables* - This component makes it easy to access variables in Behavior Designer such as Ammo, Weapon, Health, Explore, Distances, and Anger.
 
 # 1. Task Score Component
@@ -26,7 +26,7 @@ Since the Utility Selector chooses the task with the highest values, you sometim
 *Target Health* - 100=healthy, 0=dead  
 *Health* - 100=healthy, 0=dead  
 *Anger* - 100=angry, 0=calm.  Damage to the agent increases anger.  Time decreases anger (based on the rate set in Attribute Manager)  
-*Weapons* - 0 none, 10 club, 20 knife, 30 sword, 40 pistol, 50 shotgun, 60 automatic   
+*Weapons* - 0 none, 100=most powerful weapon   
 *Ammo* - 100=full, 0=empty  
 
 ### Setup
@@ -58,13 +58,18 @@ Anger is a component that increases the anger attribute when the agent receives 
 1. Add an Anger attribute to your agent’s Attribute Manager with min/max of 0,100 and set auto decrement (if you choose).  Set the initial value to zero for a passive agent and to 100 for an aggresive agent or any value in between.  
 
 # 3. Distance Component  
-The distance component has a list of objects and their types (healthpack, player, ammo, etc).  It will determine if an object is visible by the agent and if so will calculate the distance.  An object type, such as HealhPack, can have multiple objects, and the distance value will be for the closest visible object of that type.  Any distance over 99 is capped at 99.  100 is used to indicate not visible.
+The distance component tracks the distance from the agent to all objects with the following tags using a BD Global Variable with the same name (with Distance appended):  
+*healthpack, player, ammo, weapon, ambush*  
+It will determine if each object is visible by the agent and if visible that object will be marked as "known". If an object is not static and has not been seen for 5 seconds, the "known" flag is cleared.  The component will update the distance to all currently  "known" objects and set the distance to 100 for all others.  An object tag can have multiple objects, and the distance value will be for the current closest object with that tag.  Any distance over 99 is capped at 99.  100 is used to indicate not visible.
 
 ### Field of Vision
 Rather than having a fixed cutoff for whether an item is in or out of field of vision, objects toward the center can be seen further off, and off to the side must be closer to be considered visible.
 
 # 4. Behavior Variables Component  
-This Unity component makes it easy to access variables in Behavior Designer such as Ammo, Weapon, Health, and Anger.  All variables are provided as floats scaled from 0 to 100.0f.
+This Unity component makes it easy to access variables in Behavior Designer such as:  
+*Ammo, Weapon, Health, Anger  
+and distances to healthpack, player, ammo, weapon, ambush*  
+All variables are provided as floats scaled from 0 to 100.0f.
 
 ### Setup  
 1. Add the Behavior Variables component to your agent.
