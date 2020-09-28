@@ -1,21 +1,23 @@
 # Task Score
-Task Score provides the score for an activity to the Behavior Designer (BD) Utility Selector based on the weights you assign to  attributes. The BD Utility Selector then runs the activity with the highest score.   For example, a Retrieve HealthPack task could be configured with a high weighting for low health and a high weighting for a HealthPack being nearby.  As the health rating gets worse, the Retrieve HealthPack score gets higher  and eventually becomes the highest rated task for the Utility Selector.  Using weighted attribute task scores can provide more natural and intelligent behavior for an agent's decisions rather than having a tree of binary decisions. 
+Task Score provides the score for an activity to the Behavior Designer (BD) Utility Selector based on the weights you assign to attributes. The BD Utility Selector then runs the activity with the highest score.   For example, a Retrieve HealthPack task could be configured with a high weighting for low health and a high weighting for a HealthPack being nearby.  As the health rating gets worse, the Retrieve HealthPack score gets higher  and eventually becomes the highest rated task for the Utility Selector.  Using weighted attribute task scores can provide more natural and intelligent behavior for an agent's decisions rather than having a tree of binary decisions. 
 
 # Overview of Components
 
 These components work with the Opsive Behavior Utility Selector:
 
-- *Task Score* - This BD task provides the score for an activity to the BD Utility Selector based on the weights you assign to various attributes. The Utility Selector then runs the activity with the highest score.  Any float Behavior Designer global variable can be used as a component of the score for a task.
+- *Task Score* - This BD task provides the score for an activity to the BD Utility Selector based on the weights you assign to various attributes. The Utility Selector then runs the activity with the highest score.  Any Behavior Designer global variable (float) can be used as a component of the score for a task.
 - *Anger* - This component increases the anger attribute of the Agent in the BD Attribute Manager when the agent is attacked. The Attribute Manager can be configured to decrease anger over time.  The initial value for anger in the Attribute Manager can range from zero for a passive agent to 100 for an aggresive agent.  
 - *Distance* - This component determines if key object types are visible, calculates their distance, and updates Behavior Designer global variables. Rather than having a cut-off based on in or out of field of view, this determines visibility based on a combination of angle and distance - the further to the side the object is, the lower the distance it is visible, while an object directly in front of the agent is visible further away.  This also provides an Explore attribute which indicates that no useful objects have been found.
-- *Behavior Variables* - This component makes it easy to access variables in Behavior Designer such as Ammo, Weapon, Health, Explore, Distances, and Anger.
+- *Behavior Variables* - This component makes it easy to access variables in Behavior Designer such as Ammo, Weapon, Health, Explore, Anger, and Distances.
 
 # 1. Task Score Component
 
 Task Score is a Behavior Designer task which returns the score for a particular task group.  The Utility Selector will then run the task with the highest score.  
 
 ### Parameters
-Any float Behavior designer global variable can be a component of the task score.  All attributes should be scaled from 0 to 100.0f.  You can set a weighting from 0 to 1.0f for each attribute.  The  score is the sum of each attribute’s weight times the attribute’s value.    To provide a consistent basis for scoring between activities, the sum of the weights should be equal to 1.0f for a high priority task, 0.9f for medium priority, and 0.8f for a low priority activity.
+Any float Behavior designer global variable can be a component of the task score.   You can set a weighting from 0 to 1.0f for each attribute.  The  score is the sum of each attribute’s weight times the attribute’s value.    To provide a consistent basis for scoring between activities:  
+1. All attributes should be scaled from 0 to 100.0f.  
+1. The sum of the weights should be equal to 1.0f for a high priority task, 0.9f for medium priority, and 0.8f for a low priority activity.  
 
 ### Reversed Scale
 Since the Utility Selector chooses the task with the highest values, you sometimes want to reverse the scale for  a parameter to have it increase utility.  For example, as a player’s health gets lower, you might want to give a higher result for getting a healthpack.  You can do this by assigning a negative weight.  This is handled as a special case that reverses the scale (100-value) and applies the absolute value of the weight. 
@@ -58,9 +60,9 @@ The anger component increases the anger attribute in Attribute Manager when the 
 1. Add an Anger attribute to your agent’s Attribute Manager with min/max of 0,100 and set auto decrement (if you choose).  Set the initial value to zero for a passive agent and to 100 for an aggresive agent or any value in between.  
 
 # 3. Distance Component  
-The distance component tracks the distance from the agent to all objects with the following tags. It updates a BD Global Variable with the same name with Distance appended:  
+The distance component tracks the distance from the agent to all objects with the following tags. It updates a BD Global Variable with the same name (with Distance appended):  
 *healthpack, player, ammo, weapon, ambush*  
-It will determine if each object is visible by the agent and if visible that object will be marked as "known". If an object is not static and has not been seen for 5 seconds, the "known" flag is cleared.  The component will calculate the distance to all currently  "known" objects (capped at 99 units).  The actual value stored is how close the item is, which is 100-distance.  An object tag can have multiple objects, and the value will be for the current closest object with that tag.   0=close, 99=far, 100=not visible.  
+It determines if each object is visible by the agent and if visible that object is marked as "known". If an object is not been seen for 5 seconds and is not static, the "known" flag is cleared.  The component calculates the distance to all currently "known" objects.  An object tag can have multiple objects, and the value will be for the current closest object with that tag.   0=close, 99=far, 100=not known.  
   
 ### Explore attribute  
 This also provides an *Explore attribute* which indicates that no useful objects have been found. It increases if no valuable targets have been found.  The higher this value, the more useful exploring is.  
