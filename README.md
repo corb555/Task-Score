@@ -51,7 +51,7 @@ Score= (20 * 0.5) + (70 * 0.4) = 38  (Note that the sum of weights is 0.9, so if
 
 # 2. Anger Component
 
-Anger is a component that increases the anger attribute when the agent receives damage and updates the Anger attribute in Attribute Manager.
+The anger component increases the anger attribute in Attribute Manager when the agent receives damage.
 
 ### Setup
 1. Add the Anger component to your Agent.  
