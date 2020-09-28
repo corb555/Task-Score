@@ -32,14 +32,14 @@ Since the Utility Selector chooses the task with the highest values, you sometim
 ### FPS Example
 
 In this example, we are equal distance from the player and from the healthpack and our health is low.  We have two tasks to score:  1) Seek Healthpack, and 2) Attack Player.  The attribute values are:  
-*Health=20, Target Close(HealthPack)=70, Target Close(Player)=70*  
+*Health=20, HealthPackDistance=30, PlayerDistance=30*  
 
 *Task Score for “Seek Heathpack”*  
-Weight Set to:  Health= -0.6, Target Close(HealthPack)=0.4  
-Score= (80 * 0.6) + (70 * 0.4) = 76  (Note the Health score is reversed to 80 because the weight is negative.  The lower our health, the higher we want the score.)  
+Weight Set to:  Health= -0.6, HealthPackDistance=-0.4  
+Score= (80 * 0.6) + (70 * 0.4) = 76  (Note the Health score is reversed to 80 because the weight is negative.  The lower our health, the higher we want the score.  Distance is also reversed to reward being closer, not distant.)  
   
 *Task Score for “Attack Player”*  
-Weight set to:  Health= 0.5, Target Close(Player)=0.4  
+Weight set to:  Health= 0.5, PlayerDistance=-0.4  
 Score= (20 * 0.5) + (70 * 0.4) = 38  (Note that the sum of weights is 0.9, so if everything is equal (equal distance to targets and health=50), the Seek Healthpack will be selected since it has total weights of 1.0.)  
 
 # 2. Distance Component  
