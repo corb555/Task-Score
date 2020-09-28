@@ -24,7 +24,7 @@ Since the Utility Selector chooses the task with the highest values, you sometim
 
 ### Sample Parameters
 *Target Distance* -  0=close, 99=far, 100=not visible. The target can be healthpack, weapon, ammo, player, etc.  
-*Explore* -  Increases if no valuable targets have been found.  100=None found, 99=Useful targets are far, 0=Useful targets are near.  Value = (avg(distance) + min(distance))/2  The higher this value, the more useful exploring is.  
+*Explore* -  Increases if no valuable targets have been found.  100=100% of target types unfound, 0=0% of target types unfound. The higher this value, the more useful exploring is.  
 *Target Health* - 100=healthy, 0=dead  
 *Health* - 100=healthy, 0=dead  
 *Anger* - 100=angry, 0=calm.  Damage to the agent increases anger.  Time decreases anger (based on the rate set in Attribute Manager)  
@@ -62,12 +62,13 @@ The anger component increases the anger attribute in Attribute Manager when the 
 # 3. Distance Component  
 The distance component tracks the distance from the agent to all objects with the following tags. It updates a BD Global Variable with the same name (with Distance appended):  
 *healthpack, player, ammo, weapon, ambush*  
-It determines if each object is visible by the agent and if visible that object is marked as "known". If an object is not been seen for 5 seconds and is not static, the "known" flag is cleared.  The component calculates the distance to all currently "known" objects.  An object tag can have multiple objects, and the value will be for the current closest object with that tag.   0=close, 99=far, 100=not known.  
+It determines if each object is visible by the agent and if visible that object is marked as "found". If an object is not been seen for 5 seconds and is not static, the "found" flag is cleared.  The component calculates the distance to all currently "found" objects.  An object tag can have multiple objects, and the value will be for the current closest object with that tag.   0=close, 99=far, 100=not known.  
   
 ### Explore attribute  
-This also provides an *Explore attribute* which indicates that no useful objects have been found. It increases if no valuable targets have been found.  The higher this value, the more useful exploring is.  
-100=None found, 99=Useful targets are far, 0=Useful targets are near.  
-Value = (avg(distance) + min(distance))/2    
+This also provides an *Explore attribute* which is percent of target types not yet found.  The higher this value, the more useful exploring is.  
+100=100% of target types unfound, 0=0% of target types unfound.  
+If a single object is found for the tag, the tag is considered found.  These are the tags tracked:   
+*healthpack, player, ammo, weapon*
 
 ### Field of Vision
 Rather than having a fixed cutoff for whether an item is in or out of field of vision, objects toward the center can be seen further off, and off to the side must be closer to be considered visible.
