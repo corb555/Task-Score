@@ -22,15 +22,6 @@ Any float Behavior designer global variable can be a component of the task score
 ### Reversed Scale
 Since the Utility Selector chooses the task with the highest values, you sometimes want to reverse the scale for  a parameter to have it increase utility.  For example, as a player’s health gets lower, you might want to give a higher result for getting a healthpack.  You can do this by assigning a negative weight.  This is handled as a special case that reverses the scale (100-value) and applies the absolute value of the weight. 
 
-### Sample Parameters
-*Target Distance* -  0=close, 99=far, 100=not visible. The target can be healthpack, weapon, ammo, player, etc.  
-*Explore* -  Increases if no valuable targets have been found.  100=100% of target types unfound, 0=0% of target types unfound. The higher this value, the more useful exploring is.  
-*Target Health* - 100=healthy, 0=dead  
-*Health* - 100=healthy, 0=dead  
-*Anger* - 100=angry, 0=calm.  Damage to the agent increases anger.  Time decreases anger (based on the rate set in Attribute Manager)  
-*Weapons* - 0 none, 100=most powerful weapon   
-*Ammo* - 100=full, 0=empty  
-
 ### Setup
 1. In the Behavior Designer edit window, add a Task Score Task for each activity under Utility Selector and connect it to the Utility Selector with the actions connected below it.  
 1. In the BD Variables tab, add the Global Variables you want for your project (potentially the items in Sample Parameters above).  
@@ -38,7 +29,7 @@ Since the Utility Selector chooses the task with the highest values, you sometim
 1. Setup Behavior Variables as described in that section.
 1. If you want to use Anger in your score, setup Anger as described in that section.
 
-### Example
+### FPS Example
 
 In this example, we are equal distance from the player and from the healthpack and our health is low.  We have two tasks to score:  1) Seek Healthpack, and 2) Attack Player.  The attribute values are:  
 *Health=20, Target Close(HealthPack)=70, Target Close(Player)=70*  
@@ -51,15 +42,7 @@ Score= (80 * 0.6) + (70 * 0.4) = 76  (Note the Health score is reversed to 80 be
 Weight set to:  Health= 0.5, Target Close(Player)=0.4  
 Score= (20 * 0.5) + (70 * 0.4) = 38  (Note that the sum of weights is 0.9, so if everything is equal (equal distance to targets and health=50), the Seek Healthpack will be selected since it has total weights of 1.0.)  
 
-# 2. Anger Component
-
-The anger component increases the anger attribute in Attribute Manager when the agent receives damage.
-
-### Setup
-1. Add the Anger component to your Agent.  Set the increment value for each damage attack in the Inspector.
-1. Add an Anger attribute to your agent’s Attribute Manager with min/max of 0,100 and set auto decrement (if you choose).  Set the initial value to zero for a passive agent and to 100 for an aggresive agent or any value in between.  
-
-# 3. Distance Component  
+# 2. Distance Component  
 The distance component tracks the distance from the agent to all objects with the following tags. It updates a BD Global Variable with the same name (with Distance appended):  
 *healthpack, player, ammo, weapon, ambush*  
 It determines if each object is visible by the agent and if visible that object is marked as "found". If an object is not been seen for 5 seconds and is not static, the "found" flag is cleared.  The component calculates the distance to all currently "found" objects.  An object tag can have multiple objects, and the value will be for the current closest object with that tag.   0=close, 99=far, 100=not known.  
@@ -73,13 +56,30 @@ If a single object is found for the tag, the tag is considered found.  These are
 ### Field of Vision
 Rather than having a fixed cutoff for whether an item is in or out of field of vision, objects toward the center can be seen further off, and off to the side must be closer to be considered visible.
 
-# 4. Shooter Variables Component  
+# 3. Shooter Variables Component  
 This Unity component makes it easy to access FPS type variables in Behavior Designer such as:  
 *Ammo, Weapon, Health, Anger  
 and distances to healthpack, player, ammo, weapon, ambush*  
 All variables are provided as floats scaled from 0 to 100.0f.
 
+### Parameters
+*Target Distance* -  0=close, 99=far, 100=not visible. The target can be healthpack, weapon, ammo, player, etc.  
+*Explore* -  Increases if no valuable targets have been found.  100=100% of target types unfound, 0=0% of target types unfound. The higher this value, the more useful exploring is.  
+*Target Health* - 100=healthy, 0=dead  
+*Health* - 100=healthy, 0=dead  
+*Anger* - 100=angry, 0=calm.  Damage to the agent increases anger.  Time decreases anger (based on the rate set in Attribute Manager)  
+*Weapons* - 0 none, 100=most powerful weapon   
+*Ammo* - 100=full, 0=empty  
+
 ### Setup  
 1. Add the Behavior Variables component to your agent.
+
+# 4. Anger Component
+
+The anger component increases the anger attribute in Attribute Manager when the agent receives damage.
+
+### Setup
+1. Add the Anger component to your Agent.  Set the increment value for each damage attack in the Inspector.
+1. Add an Anger attribute to your agent’s Attribute Manager with min/max of 0,100 and set auto decrement (if you choose).  Set the initial value to zero for a passive agent and to 100 for an aggresive agent or any value in between.  
 
 
