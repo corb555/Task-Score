@@ -40,8 +40,8 @@ Weight Set to:  Health= -0.6, HealthPackDistance=-0.4
 **Score= 76** = (80 * 0.6) + (70 * 0.4)   (Note the Health score is reversed to 80 because the weight is negative.  The lower our health, the higher we want the score.  Distance is also reversed to reward being closer, not distant.)  
   
 *Task Score for “Attack Player”*  
-Weight set to:  Health= 0.5, PlayerDistance=-0.4  
-**Score= 38** = (20 * 0.5) + (70 * 0.4)  (Note that the sum of weights is 0.9, so if everything is equal (equal distance to targets and health=50), the Seek Healthpack will be selected since it has total weights of 1.0.)  
+Weight set to:  Health= 0.6, PlayerDistance=-0.4  
+**Score= 40** = (20 * 0.6) + (70 * 0.4)   
 
 # 2. Distance Component  
 The distance component tracks the distance from the agent to all objects with the following tags. It provides access for a BD Global Variable with the same name (with Distance appended):  
@@ -57,13 +57,17 @@ If a single object is found for the tag, the tag is considered found.  These are
 ### Field of Vision
 Rather than having a fixed cutoff for whether an item is in or out of field of vision, objects toward the center can be seen further off, and off to the side must be closer to be considered visible.
 
+### Variables  
+*HealthPackDistance* - 100=not found, 99=far, 0=near  
+player, ammo, weapon, ambush, explore  
+
 ### Setup
 todo   
 
 # 3. Shooter Variables Component  
 This Unity component makes it easy to access FPS type variables in Behavior Designer such as:  
 *Ammo, Weapon, Health, Anger  
-and distances to healthpack, player, ammo, weapon, ambush*  
+
 All variables are provided as floats scaled from 0 to 100.0f.   
 The component would be modified to track other types of variables specific to a particular game.  
 
