@@ -63,11 +63,11 @@ If a single object is found for the tag, the tag is considered found.  These are
 
 ### Variables  
 *HealthPackDistance* - 100=not found, 99=far, 0=near  
-*playerDistance* - 100=not found, 99=far, 0=near
-*ammoDistance* - 100=not found, 99=far, 0=near
-*weaponDistance* - 100=not found, 99=far, 0=near
-*ambushDistance* - 100=not found, 99=far, 0=near
-*explore* - 100=100% of target types unfound, 0=0% of target types unfound.
+*playerDistance* - 100=not found, 99=far, 0=near  
+*ammoDistance* - 100=not found, 99=far, 0=near  
+*weaponDistance* - 100=not found, 99=far, 0=near  
+*ambushDistance* - 100=not found, 99=far, 0=near  
+*explore* - 100=100% of target types unfound, 0=0% of target types unfound.  
 
 ### Setup
 *todo*   
