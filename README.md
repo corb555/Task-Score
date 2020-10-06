@@ -5,9 +5,9 @@ Task Score provides the score for an activity to the Opsive Behavior Designer (B
 
 These components work with the Opsive Behavior Utility Selector:
 
-- *Task Score* - This task provides the score for an activity to the BD Utility Selector based on the weights you assign to various attributes. The Utility Selector then runs the activity with the highest score.  Behavior Designer  global variable are used as the components of the score for a task.
-- *Distance* - This component determines if key object types are visible, calculates their distance, and makes them available as Behavior Designer variables. Rather than having a visibility cut-off based on in or out of field of view, this determines visibility based on a combination of angle and distance - the further to the side the object is, the lower the distance it is visible, while an object directly in front of the agent is visible further away.  This also provides an Explore attribute which indicates that no useful objects have been found.
-- *Shooter Variables* - This component makes it easy to access variables used in an FPS type game in Behavior Designer such as Ammo, Weapon, Health, Explore, Anger.  This component would be modified to track other scoring attributes specific to a particular game.
+- *Task Score* - This task provides the score for an activity to the BD Utility Selector based on the weights you assign to various attributes. The Utility Selector then runs the activity with the highest score.  Behavior Designer  global variables are used as the components of the score for a task.
+- *Distance* - This component determines if key object types are visible (healthpacks, etc), calculates their distance, and makes their location and distance available as Behavior Designer variables. Rather than having a visibility cut-off based on in or out of field of view, this determines visibility based on a combination of angle and distance - the further to the side the object is, the lower the distance it is visible, while an object directly in front of the agent is visible further away.  This also provides an Explore attribute which indicates that no useful objects have been found.
+- *Shooter Variables* - This component makes it easy to access variables used in an FPS type game in Behavior Designer such as Ammunition amount, Weapon strength, Health, Explore, and Anger level.  This component would be modified to track the scoring attributes specific to your particular game.
 - *Anger* - This component increases the anger attribute of the Agent in the BD Attribute Manager when the agent is attacked. The Attribute Manager can be configured to decrease anger over time.  The initial value for anger in the Attribute Manager can range from zero for a passive agent to 100 for an aggresive agent.  
 
 # 1. Task Score Component
@@ -43,8 +43,10 @@ Weight Set to:  Health= -0.6, HealthPackDistance=-0.4
 Weight set to:  Health= 0.6, PlayerDistance=-0.4  
 **Score= 40** = (20 * 0.6) + (70 * 0.4)   
 
+In this case, the score for Seek Healthpack would be higher than Attack Player.  If Health was 80, the score for Attack Player would be higher.  
+
 # 2. Distance Component  
-The distance component tracks the distance from the agent to all objects with the following tags. It provides access for a BD Global Variable with the same name (with Distance appended):  
+The distance component tracks the distance from the agent to all objects with the tags listed below. It provides access for a BD Global Variable with the same name (with Distance appended):  
 *healthpack, player, ammo, weapon, ambush*  
 It determines if each object is visible by the agent and if visible that object is marked as "found". If an object is not been seen for 5 seconds and is not static, the "found" flag is cleared.  The component calculates the distance to all currently "found" objects.  An object tag can have multiple objects, and the value will be for the current closest object with that tag.   0=close, 99=far, 100=not known.  
 
