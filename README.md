@@ -70,7 +70,7 @@ If a single object is found for the tag, the tag is considered found.  These are
 ### Setup
 1. Add the Distance Component to your agent.
 1. In the BD Variables tab, add the Global Variables you want for your project from the Variables above.  
-![BD Designer](bd variables.png)
+![BD Designer](images/bd variables.png)
 ![alt text](image.jpg)
 
 # 3. Shooter Variables Component  
