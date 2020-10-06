@@ -48,25 +48,29 @@ Weights are set to:  Health= 0.6, PlayerDistance=-0.4
 In this case, the score for Seek Healthpack would be higher than Attack Player.  If Health was 80, the score for Attack Player would be higher.  
 
 # 2. Distance Component  
-The distance component tracks the distance from the agent to all objects with the tags listed below. It provides access for a BD Global Variable with the same name (with Distance appended):  
+The distance component tracks the distance from the agent to all objects with the tags listed below. 
 *healthpack, player, ammo, weapon, ambush*  
-It determines if each object is visible by the agent and if visible that object is marked as "found". If an object is not been seen for 5 seconds and is not static, the "found" flag is cleared.  The component calculates the distance to all currently "found" objects.  An object tag can have multiple objects, and the value will be for the current closest object with that tag.   0=close, 99=far, 100=not known.  
+It updates BD Global Variables with the same name (with Distance appended).
+It determines if each object is visible by the agent and if visible, that object is marked as "found". If an object is not been seen for N seconds and is not static, the "found" flag is cleared.  The component calculates the distance to all currently "found" objects.  An object tag can have multiple objects, and the value will be for the current closest object with that tag.   0=close, 99=far, 100=not known.  
 
 ### Field of Vision  
 Rather than having a fixed cutoff for whether an item is in or out of field of vision, objects toward the center can be seen further off, and off to the side must be closer to be considered visible.  
 
 ### Explore attribute  
-This also provides an *Explore attribute* which is percent of target types not yet found.  The higher this value, the more useful exploring is.  
-100=100% of target types unfound, 0=0% of target types unfound.  
+This also provides an *Explore attribute* which is percent of target types not yet found.  The higher this value, the more useful exploring is.    
 If a single object is found for the tag, the tag is considered found.  These are the tags tracked:   
 *healthpack, player, ammo, weapon*
 
 ### Variables  
 *HealthPackDistance* - 100=not found, 99=far, 0=near  
-player, ammo, weapon, ambush, explore  
+*playerDistance* - 100=not found, 99=far, 0=near
+*ammoDistance* - 100=not found, 99=far, 0=near
+*weaponDistance* - 100=not found, 99=far, 0=near
+*ambushDistance* - 100=not found, 99=far, 0=near
+*explore* - 100=100% of target types unfound, 0=0% of target types unfound.
 
 ### Setup
-todo   
+*todo*   
 
 # 3. Shooter Variables Component  
 This Unity component makes it easy to access FPS type variables in Behavior Designer such as:  
@@ -92,5 +96,3 @@ The anger component increases the anger attribute in Attribute Manager when the 
 ### Setup
 1. Add the Anger component to your Agent.  Set the increment value for each damage attack in the Inspector.
 1. Add an Anger attribute to your agent’s Attribute Manager with min/max of 0,100 and set auto decrement (if you choose).  Set the initial value to zero for a passive agent and to 100 for an aggresive agent or any value in between.  
-
-
