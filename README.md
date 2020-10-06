@@ -48,7 +48,7 @@ Weights are set to:  Health= 0.6, PlayerDistance=-0.4
 In this case, the score for Seek Healthpack would be higher than Attack Player.  If Health was 80, the score for Attack Player would be higher.  
 
 # 2. Distance Component  
-The distance component tracks the distance from the agent to all objects with the tags listed below. 
+The distance component tracks the distance from the agent to all objects with the tags listed below.  
 *healthpack, player, ammo, weapon, ambush*  
 It updates BD Global Variables with the same name (with Distance appended).
 It determines if each object is visible by the agent and if visible, that object is marked as "found". If an object is not been seen for N seconds and is not static, the "found" flag is cleared.  The component calculates the distance to all currently "found" objects.  An object tag can have multiple objects, and the value will be for the current closest object with that tag.   0=close, 99=far, 100=not known.  
