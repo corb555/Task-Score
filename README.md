@@ -70,8 +70,7 @@ If a single object is found for the tag, the tag is considered found.  These are
 ### Setup
 1. Add the Distance Component to your agent.
 1. In the BD Variables tab, add the Global Variables you want for your project from the Variables above.  
-![BD Designer](images/bd variables.png)
-![alt text](images/bd variables.png)
+![BD Designer](images/"bd variables.png")
 
 # 3. Shooter Variables Component  
 This Unity component makes it easy to access FPS type variables in Behavior Designer such as:  
