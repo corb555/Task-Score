@@ -80,7 +80,7 @@ This Unity component makes it easy to access FPS type variables in Behavior Desi
 *Ammo, Weapon, Health, Anger  
 
 All variables are provided as floats scaled from 0 to 100.0f.   
-The component would be modified to track other types of variables specific to a particular game.  
+This component would be modified to track other types of variables specific to your game.  
 
 ### Variables
 *Target Health* - 100=healthy, 0=dead  
