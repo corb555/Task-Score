@@ -7,7 +7,7 @@ These components work with the Opsive Behavior Utility Selector:
 
 - *Task Score* - This task provides the score for an activity to the BD Utility Selector based on the weights you assign to various attributes. The Utility Selector then runs the activity with the highest score.  Behavior Designer  global variables are used as the components of the score for a task.
 - *Distance* - This component determines if key object types are visible (healthpacks, etc), calculates their distance, and makes their location and distance available as Behavior Designer variables. Rather than having a visibility cut-off based on in or out of field of view, this determines visibility based on a combination of angle and distance - the further to the side the object is, the lower the distance it is visible, while an object directly in front of the agent is visible further away.  This also provides an Explore attribute which indicates that no useful objects have been found.
-- *Shooter Variables* - This component makes it easy to access variables used in an FPS type game in Behavior Designer such as Ammunition amount, Weapon strength, Health, Explore, and Anger level.  This component would be modified to track the scoring attributes specific to your particular game.
+- *FPS Variables* - This component makes it easy to access variables used in an FPS type game in Behavior Designer such as Ammunition amount, Weapon strength, Health, Explore, and Anger level.  This component would be modified to track the scoring attributes specific to your particular game.
 - *Anger* - This component increases the anger attribute of the Agent in the BD Attribute Manager when the agent is attacked. The Attribute Manager can be configured to decrease anger over time.  The initial value for anger in the Attribute Manager can range from zero for a passive agent to 100 for an aggresive agent.  
 
 # 1. Task Score Component
@@ -75,7 +75,7 @@ If a single object is found for the tag, the tag is considered found.  These are
 1. In the BD Variables tab, add the Global Variables you want for your project from the Variables above.  
 ![BD Designer](images/bdVariables.png)
 
-# 3. Shooter Variables Component  
+# 3. FPS Variables Component  
 This Unity component makes it easy to access FPS type variables in Behavior Designer such as:  
 *Ammo, Weapon, Health, Anger  
 
