@@ -22,8 +22,8 @@ Any float Behavior designer global variable can be a component of the task score
 ### Reverse Scale
 Since the Utility Selector chooses the task with the highest values, you sometimes need to reverse the scale for  a parameter to have it increase utility.  For example, as a player’s health gets lower, you might want to give a higher result for getting a healthpack.  You can do this by assigning a negative weight.  This is handled as a special case that reverses the scale (100-value) and applies the absolute value of the weight. 
 
-### Upper and Lower Bounds **TODO**
-You can also specify that an attribute MUST be lower than a value or greater than a value.  If the attribute does not fall in those bounds a score of zero is returned.  For example, you can configure that playerDistance must be less than 8 for Melee attack.
+### Upper and Lower Bounds
+You can also specify that an attribute MUST be lower than a value or greater than a value.  If the attribute does not fall in those bounds a score of zero is returned.  For example, you can configure that playerDistance must be less than 8 for Melee attack.  Or, if target distance=100 (notfound) you will almost always want to return 0.  Note: the bound is checked *without* reversing the scale.
 
 ### Setup  
 1. Follow the Setup instructions for the Distance component, Anger Component, and Shooter Variables component below, before setting up this component. 
