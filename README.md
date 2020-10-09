@@ -53,7 +53,7 @@ The distance component tracks the distance from the agent to all objects that ha
 *healthpack, player, ammo, weapon, ambush*  
 It updates BD Global Variables with the same name (with Distance appended).  For a pickup item, the tag should be applied to the item with the collider and
 pickup script.
-This component determines if each object is visible by the agent and if visible, that object is considered "found". If an object is not been seen for N seconds and is not static, the "found" flag is cleared.  The component calculates the distance to all currently "found" objects.  An object tag can have multiple objects, and the value will be for the current closest object with that tag.   0=close, 99=far, 100=not known.  
+This component determines if each object is visible by the agent and if visible, that object is considered "found". If an object is not been seen for N seconds *and is not static*, the "found" flag is cleared.  The component calculates the distance to all currently "found" objects.  An object tag can have multiple objects, and the value will be for the current closest object with that tag.   0=close, 99=far, 100=not known.  
 
 ### Field of Vision  
 Rather than having a fixed cutoff for whether an item is in or out of field of vision, objects toward the center can be seen further off, and off to the side must be closer to be considered visible.  
