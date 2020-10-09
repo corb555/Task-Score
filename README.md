@@ -73,7 +73,7 @@ If a single object is found for the tag, the tag is considered found.  These are
 
 ### Setup
 1. Add the Distance Component to your agent.
-1. In the BD Variables tab, add the Global Variables you want for your project from the Variables above.  
+1. In the Behavior Designer Variables tab, add the Global Variables you want for your project from the Variables above.  
 ![BD Designer](images/bdVariables.png)
 
 # 3. FPS Variables Component  
