@@ -78,7 +78,7 @@ If a single object is found for the tag, the tag is considered found.  These are
 
 # 3. FPS Variables Component  
 This Unity component makes it easy to access FPS type variables in Behavior Designer such as:  
-*Ammo, Weapon, Health, Anger  
+*Ammo, Weapon, Health, Anger*  
 
 All variables are provided as floats scaled from 0 to 100.0f.   
 This component would be modified to track other types of variables specific to your game.  
