@@ -1,6 +1,10 @@
 # Task Score
 Task Score provides the score for an activity to the Opsive Behavior Designer (BD) Utility Selector. For each activity, you configure which attributes to use and how much to weight each attribute. The BD Utility Selector then runs the activity with the highest score.   For example, a Retrieve HealthPack task could be configured with a high weighting for  health and a HealthPack being nearby.  As the health rating gets worse, the Retrieve HealthPack score gets higher  and eventually becomes the highest rated task for the Utility Selector if there is a known healthpack nearby.  Using weighted attribute task scores can provide more natural and intelligent behavior for an agent's decisions rather than having a tree of binary decisions. NOTE: These components work with Opsive Behavior Designer but are not affiliated with Opsive or supported by Opsive.
 
+### Table of Contents
+**[Overview of Components](#Overview-of-Components)**<br>
+**[Task Score Component](#Task-Score-Component)**<br>
+
 # Overview of Components
 
 These components work with the Opsive Behavior Utility Selector:
