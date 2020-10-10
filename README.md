@@ -98,9 +98,10 @@ This component would be modified to track other types of variables specific to y
 ### Variables
 *Target Health* - 100=healthy, 0=dead  
 *Health* - 100=healthy, 0=dead  
-*Anger* - 100=angry, 0=calm.  Damage to the agent increases anger.  Time decreases anger (based on the rate set in Attribute Manager)  
-*Weapons* - 0 none, 100=most powerful weapon.  For example: 60 Knife, 65 Sword, 95 Rocket Launcher.     
-*Ammo* - 100=full, 0=empty.  Note: this is not the number of bullets, it is the percent of "adequate" ammunition.  A rocket launcher with 12 rockets would be considered full and would return a score of 100.  
+*Anger* - 100=angry, 0=calm.  Damage to the agent increases anger.  Time decreases anger (based on the rate set in Attribute Manager) 
+*MeleeWeapons* - 0 none, 100=most powerful weapon.  For example: 40 Club, 60 Knife, 65 Sword. 
+*RangeWeapons* - 0 none, 100=most powerful weapon.  For example:  75 Pistol, 85 Assault Rifle 95 Rocket Launcher.     
+*Ammo* - 100=full, 0=empty.  Note: this is the percent of "adequate" ammunition, not the number of bullets.  A rocket launcher with 12 rockets would return a score of 100.  An assault rifle with 12 bullets would return a score of 3.
 
 ### Setup  
 1. Add the Shooter Variables Component to your agent.
