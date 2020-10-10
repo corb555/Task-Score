@@ -13,8 +13,7 @@ These components work with the Opsive Behavior Utility Selector:
 
 - *Task Score* - This task provides the score for an activity to the BD Utility Selector based on the weights you assign to various attributes. The Utility Selector then runs the activity with the highest score.  Behavior Designer  global variables are used as the components of the score for a task.
 - *Distance* - This component determines if key object types are visible (healthpacks, etc), calculates their distance, and makes their location and distance available as Behavior Designer variables. This also provides an Explore attribute which indicates that no useful objects or few useful objects have been found.
-- *FPS Variables* - This component makes it easy to access variables used in a basic FPS type game in Behavior Designer such as Ammunition amount, Weapon strength, Health, Explore, and Anger level.  This component would be modified to track the scoring attributes specific to your particular game.
-- *Anger* - This component increases the anger attribute of the Agent in the BD Attribute Manager when the agent is attacked. The Attribute Manager can be configured to decrease anger over time.  The initial value for anger in the Attribute Manager can range from zero for a passive agent to 100 for an aggresive agent.  
+- *FPS Variables* - This component makes it easy to access variables used in a basic FPS type game in Behavior Designer such as Ammunition amount, Weapon strength, Health, Explore, and Anger level.  This component would be modified to track the scoring attributes specific to your particular game. This component also increases the anger attribute of the Agent in the BD Attribute Manager when the agent is attacked. 
 
 # *Component Details*  
 
@@ -99,7 +98,7 @@ This Unity component makes it easy to access FPS type variables in Behavior Desi
 
 All variables are provided as floats scaled from 0 to 100.0f.   
 This component would be modified to track other types of variables specific to your game. 
-This also maintains the Anger score and increases the anger attribute in Attribute Manager whenever the agent receives damage.
+This also maintains the Anger score and increases the anger attribute in Attribute Manager whenever the agent receives damage.  The Attribute Manager can be configured to decrease anger over time.  The initial value for anger in the Attribute Manager can range from zero for a passive agent to 100 for an aggresive agent.  
 
 ### FPS Variables
 *Health* - 100=healthy, 0=dead  Agent Health
