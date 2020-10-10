@@ -19,21 +19,21 @@ Task Score is a Behavior Designer task which returns the score for a particular 
 
 ### FPS Example
 
-In this example for an FPS game, we are equal distance from the player and from the healthpack and our health is low. The attribute values are:  
+In this example for an FPS game, the agent is currently equal distance from the player and from the healthpack and its health is low. The Behavior variables values currently are:  
   
 *Health=20, HealthPackDistance=30, PlayerDistance=30*  
 
 We have two tasks to score:  1) Seek Healthpack, and 2) Attack Player.  
 
 *Task Score for “Seek Heathpack”*  
-Weights are set to:  Health= -0.6, HealthPackDistance=-0.4  
+Weights were configured to:  Health= -0.6, HealthPackDistance=-0.4  
 **Score= 76** = (80 * 0.6) + (70 * 0.4)   (Note the Health score is reversed to 80 because the weight is negative.  The lower our health, the higher we want the score.  Distance is also reversed to reward being closer, not distant.)  
   
 *Task Score for “Attack Player”*  
-Weights are set to:  Health= 0.6, PlayerDistance=-0.4  
+Weights were configured to:   Health= 0.6, PlayerDistance=-0.4  
 **Score= 40** = (20 * 0.6) + (70 * 0.4)   
 
-In this case, the score for Seek Healthpack would be higher than Attack Player.  If Health was 80, the score for Attack Player would be higher. 
+In this case, the score for Seek Healthpack would be higher than Attack Player.  If Health was 80, the score for Attack Player would be higher. You  might also  add attributes for Weapon power and Ammo for the Attack Player Score.
 
 ### Parameters
 Any float Behavior designer global variable can be a component of the task score.   You can set a weighting from 0 to 1.0f for each attribute.  The  score is the sum of each attribute’s weight times the attribute’s value.    To provide a consistent basis for scoring:  
