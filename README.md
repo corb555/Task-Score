@@ -98,7 +98,8 @@ This Unity component makes it easy to access FPS type variables in Behavior Desi
 *Ammo, MeleeWeapons, RangeWeapons, Health, Anger*  
 
 All variables are provided as floats scaled from 0 to 100.0f.   
-This component would be modified to track other types of variables specific to your game.  
+This component would be modified to track other types of variables specific to your game. 
+This also maintains the Anger score and increases the anger attribute in Attribute Manager whenever the agent receives damage.
 
 ### FPS Variables
 *Health* - 100=healthy, 0=dead  Agent Health
@@ -108,13 +109,7 @@ This component would be modified to track other types of variables specific to y
 *Ammo* - 100=full, 0=empty.  Note: this is the percent of "adequate" ammunition, not the number of bullets.  A rocket launcher with 12 rockets would return a score of 100.  An assault rifle with 12 bullets would return a score of 3.
 
 ### Setup  
-1. Add the Shooter Variables Component to your agent.
+1. Add the FPS Variables Component to your agent.
+1. Set the Anger increment value for each damage attack in the Inspector.
 1. In the BD Variables tab, add the Global Variables you want for your project from the Variables above.  
-
-# Anger Component
-
-The anger component increases the anger attribute in Attribute Manager when the agent receives damage.
-
-### Setup
-1. Add the Anger component to your Agent.  Set the increment value for each damage attack in the Inspector.
 1. Add an Anger attribute to your agent’s Attribute Manager with min/max of 0,100 and set auto decrement (if you choose).  Set the initial value to zero for a passive agent and to 100 for an aggresive agent or any value in between.  
