@@ -68,7 +68,7 @@ pickup script.
 This component determines if each object is visible by the agent and if visible, that object is considered "found". If an object is not been seen for N seconds *and is not static*, the "found" flag is cleared.  The component calculates the distance to all currently "found" objects.  An object tag can have multiple objects, and the value will be for the current closest object with that tag.   0=close, 100=far. *NOTE: 1000 is returned for not known.*  This is an exception to the 0-100 range guideline and will return very high scores for not found items which will  likely make a task using distance to that object not run.
 
 ### Field of Vision  
-Rather than having a fixed cutoff for whether an item is in or out of field of vision, this considers objects toward the center as visible further off, and objects off to the side must be closer to be considered visible.  It also allows you to "see" an item behind you if it is close.
+Rather than having a fixed cutoff for whether an item is either in or out of field of vision, this considers objects toward the center as visible further off, and objects off to the side must be closer to be considered visible.  It also allows you to "see" an item behind you if it is close.
 The actual calculation is the following  
 
 *maxViewableDistance = Mathf.Max(maxDistance - (angle * angleWeight), behindDistance)*  
