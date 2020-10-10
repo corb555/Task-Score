@@ -4,6 +4,8 @@ Task Score provides the score for an activity to the Opsive Behavior Designer (B
 ### Table of Contents
 **[Overview of Components](#Overview-of-Components)**<br>
 **[Task Score Component](#Task-Score-Component)**<br>
+**[Distance Component](#Distance-Component)**<br>
+**[FPS Variables Component](#FPS-Variables-Component)**<br>
 
 # Overview of Components
 
@@ -14,7 +16,7 @@ These components work with the Opsive Behavior Utility Selector:
 - *FPS Variables* - This component makes it easy to access variables used in a basic FPS type game in Behavior Designer such as Ammunition amount, Weapon strength, Health, Explore, and Anger level.  This component would be modified to track the scoring attributes specific to your particular game.
 - *Anger* - This component increases the anger attribute of the Agent in the BD Attribute Manager when the agent is attacked. The Attribute Manager can be configured to decrease anger over time.  The initial value for anger in the Attribute Manager can range from zero for a passive agent to 100 for an aggresive agent.  
 
-# Component Details  
+# *Component Details*  
 
 # Task Score Component
 
