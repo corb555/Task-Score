@@ -16,7 +16,7 @@ These components work with the Opsive Behavior Utility Selector:
 
 # Component Details  
 
-# 1. Task Score Component
+# Task Score Component
 
 Task Score is a Behavior Designer task which returns the score for a particular activity based on the weights you assign to various attributes.  The Utility Selector will then run the task with the highest score.  Task Score is configured with different attributes and weights for each activity.
 ![x utilitySelector](images/utilitySelector.png)  
@@ -56,7 +56,7 @@ You can also specify that an attribute MUST be lower than a value or greater tha
 1. In the Behavior Designer edit window, add a Task Score Task for each activity under Utility Selector and connect it to the Utility Selector with the actions connected below it.  Those components will be necessary to provide attributes for scoring.
 1. In the BD Inspection window for each Task Score task, add the Global Variables you want for this task and add the weight for each variable. You can also set a "greater than" value and a "less than" value for each attribute.  If the bound is not met, zero is returned for the score. 
 
-# 2. Distance Component  
+# Distance Component  
 The distance component tracks the distance from the agent to all objects that have the tags listed below.  
 *healthpack, player, ammo, weapon, ambush*  
 It updates BD Global Variables with the same name (with Distance appended).  For a pickup item, the tag should be applied to the item with the collider and
@@ -84,7 +84,7 @@ If a single object is found for the tag, the tag is considered found.  These are
 1. In the Behavior Designer Variables tab, add the Global Variables you want for your project from the Variables above.  
 ![x bdVariables](images/bdVariables.png)
 
-# 3. FPS Variables Component  
+# FPS Variables Component  
 This Unity component makes it easy to access FPS type variables in Behavior Designer such as:  
 *Ammo, Weapon, Health, Anger*  
 
@@ -102,7 +102,7 @@ This component would be modified to track other types of variables specific to y
 1. Add the Shooter Variables Component to your agent.
 1. In the BD Variables tab, add the Global Variables you want for your project from the Variables above.  
 
-# 4. Anger Component
+# Anger Component
 
 The anger component increases the anger attribute in Attribute Manager when the agent receives damage.
 
