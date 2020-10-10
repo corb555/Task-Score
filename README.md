@@ -15,7 +15,7 @@ These components work with the Opsive Behavior Utility Selector:
 # 1. Task Score Component
 
 Task Score is a Behavior Designer task which returns the score for a particular activity based on the weights you assign to various attributes.  The Utility Selector will then run the task with the highest score.  Task Score is configured with different attributes and weights for each activity.
-![BD Designer](images/utilitySelector.png)  
+![x utilitySelector](images/utilitySelector.png)  
 
 ### FPS Example
 
@@ -39,6 +39,7 @@ In this case, the score for Seek Healthpack would be higher than Attack Player. 
 Any float Behavior designer global variable can be a component of the task score.   You can set a weighting from 0 to 1.0f for each attribute.  The  score is the sum of each attribute’s weight times the attribute’s value.    To provide a consistent basis for scoring:  
 1. All attributes should be scaled from 0 to 100.0f.  
 1. The sum of the weights should be equal to 1.0f for a high priority task, 0.9f for medium priority, and 0.8f for a low priority activity.  
+![x Healthscore](images/healthScore.png)  
 
 ### Reverse Scale
 Since the Utility Selector chooses the task with the highest values, you sometimes need to reverse the scale for  a parameter to have it increase utility.  For example, as a player’s health gets lower, you might want to give a higher result for getting a healthpack.  You can do this by assigning a negative weight.  This is handled as a special case that reverses the scale (100-value) and applies the absolute value of the weight. 
@@ -77,7 +78,7 @@ If a single object is found for the tag, the tag is considered found.  These are
 ### Setup
 1. Add the Distance Component to your agent.
 1. In the Behavior Designer Variables tab, add the Global Variables you want for your project from the Variables above.  
-![BD Designer](images/bdVariables.png)
+![x bdVariables](images/bdVariables.png)
 
 # 3. FPS Variables Component  
 This Unity component makes it easy to access FPS type variables in Behavior Designer such as:  
