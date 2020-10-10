@@ -76,11 +76,11 @@ The actual calculation is the following
 maxDistance, angleWeight, and behindDistance are configurable in the Inspector. Angle is 0 if the object is straight ahead and 90 if directly to the side.  
 
 ### Explore attribute  
-This also provides an *Explore attribute* which is percent of target types not yet found.  The higher this value, the more useful exploring is.    
-If a single object is found for the tag, the tag is considered found.  These are the tags tracked:   
+This also provides an *Explore attribute* which is based on how many key components haven't yet been found.  The higher this value, the more useful exploring is.    
+If a single object is found for the tag, the tag is considered found.  These are the tags tracked for the explore value:   
 *healthpack, player, ammo, weapon*
 
-### Variables  
+### Distance Variables  
 *HealthPackDistance* - 100=not found, 99=far, 0=near  
 *PlayerDistance* - 100=not found, 99=far, 0=near  
 *AmmoDistance* - 100=not found, 99=far, 0=near  
@@ -100,12 +100,11 @@ This Unity component makes it easy to access FPS type variables in Behavior Desi
 All variables are provided as floats scaled from 0 to 100.0f.   
 This component would be modified to track other types of variables specific to your game.  
 
-### Variables
-*Target Health* - 100=healthy, 0=dead  
-*Health* - 100=healthy, 0=dead  
+### FPS Variables
+*Health* - 100=healthy, 0=dead  Agent Health
 *Anger* - 100=angry, 0=calm.  Damage to the agent increases anger.  Time decreases anger (based on the rate set in Attribute Manager) 
-*MeleeWeapons* - 0 none, 100=most powerful weapon.  For example: 40 Club, 60 Knife, 65 Sword. 
-*RangeWeapons* - 0 none, 100=most powerful weapon.  For example:  75 Pistol, 85 Assault Rifle 95 Rocket Launcher.     
+*MeleeWeapons* - 0 none, 100=most powerful weapon.  Power of equipped weapon. For example: 40 Club, 60 Knife, 65 Sword. 
+*RangeWeapons* - 0 none, 100=most powerful weapon.  Power of equipped weapon. For example:  75 Pistol, 85 Assault Rifle 95 Rocket Launcher.     
 *Ammo* - 100=full, 0=empty.  Note: this is the percent of "adequate" ammunition, not the number of bullets.  A rocket launcher with 12 rockets would return a score of 100.  An assault rifle with 12 bullets would return a score of 3.
 
 ### Setup  
