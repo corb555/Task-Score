@@ -1,18 +1,21 @@
 # Task Score
-Task Score provides the score for an activity to the Opsive Behavior Designer (BD) Utility Selector. You configure the attributes and each attributes weight for each activity score. The BD Utility Selector then runs the activity with the highest score.   For example, a Retrieve HealthPack task could be configured with a high weighting for  health and a HealthPack being nearby.  As the health rating gets worse, the Retrieve HealthPack score gets higher  and eventually becomes the highest rated task for the Utility Selector.  Using weighted attribute task scores can provide more natural and intelligent behavior for an agent's decisions rather than having a tree of binary decisions. 
+Task Score provides the score for an activity to the Opsive Behavior Designer (BD) Utility Selector. For each activity, you configure which attributes to use and how much to weight each attribute. The BD Utility Selector then runs the activity with the highest score.   For example, a Retrieve HealthPack task could be configured with a high weighting for  health and a HealthPack being nearby.  As the health rating gets worse, the Retrieve HealthPack score gets higher  and eventually becomes the highest rated task for the Utility Selector if there is a known healthpack nearby.  Using weighted attribute task scores can provide more natural and intelligent behavior for an agent's decisions rather than having a tree of binary decisions. 
 
 # Overview of Components
 
 These components work with the Opsive Behavior Utility Selector:
 
 - *Task Score* - This task provides the score for an activity to the BD Utility Selector based on the weights you assign to various attributes. The Utility Selector then runs the activity with the highest score.  Behavior Designer  global variables are used as the components of the score for a task.
-- *Distance* - This component determines if key object types are visible (healthpacks, etc), calculates their distance, and makes their location and distance available as Behavior Designer variables. Rather than having a visibility cut-off based on in or out of field of view, this determines visibility based on a combination of angle and distance - the further to the side the object is, the lower the distance it is visible, while an object directly in front of the agent is visible further away.  This also provides an Explore attribute which indicates that no useful objects have been found.
-- *FPS Variables* - This component makes it easy to access variables used in an FPS type game in Behavior Designer such as Ammunition amount, Weapon strength, Health, Explore, and Anger level.  This component would be modified to track the scoring attributes specific to your particular game.
+- *Distance* - This component determines if key object types are visible (healthpacks, etc), calculates their distance, and makes their location and distance available as Behavior Designer variables. This also provides an Explore attribute which indicates that no useful objects or few useful objects have been found.
+- *FPS Variables* - This component makes it easy to access variables used in a basic FPS type game in Behavior Designer such as Ammunition amount, Weapon strength, Health, Explore, and Anger level.  This component would be modified to track the scoring attributes specific to your particular game.
 - *Anger* - This component increases the anger attribute of the Agent in the BD Attribute Manager when the agent is attacked. The Attribute Manager can be configured to decrease anger over time.  The initial value for anger in the Attribute Manager can range from zero for a passive agent to 100 for an aggresive agent.  
+
+# Component Details  
 
 # 1. Task Score Component
 
-Task Score is a Behavior Designer task which returns the score for a particular task group.  The Utility Selector will then run the task with the highest score.  
+Task Score is a Behavior Designer task which returns the score for a particular activity.  The Utility Selector will then run the task with the highest score.  
+![BD Designer](images/behaviorSelector.png)  
 
 ### Parameters
 Any float Behavior designer global variable can be a component of the task score.   You can set a weighting from 0 to 1.0f for each attribute.  The  score is the sum of each attribute’s weight times the attribute’s value.    To provide a consistent basis for scoring:  
