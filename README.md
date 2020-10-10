@@ -82,11 +82,11 @@ If a single object is found for the tag, the tag is considered found.  These are
 
 ### Variables  
 *HealthPackDistance* - 100=not found, 99=far, 0=near  
-*playerDistance* - 100=not found, 99=far, 0=near  
-*ammoDistance* - 100=not found, 99=far, 0=near  
-*weaponDistance* - 100=not found, 99=far, 0=near  
-*ambushDistance* - 100=not found, 99=far, 0=near  
-*explore* - 100=100% of target types unfound, 0=0% of target types unfound.  
+*PlayerDistance* - 100=not found, 99=far, 0=near  
+*AmmoDistance* - 100=not found, 99=far, 0=near  
+*WeaponDistance* - 100=not found, 99=far, 0=near  
+*AmbushDistance* - 100=not found, 99=far, 0=near  
+*Explore* - 100=100% of target types unfound, 0=0% of target types unfound.  
 
 ### Setup
 1. Add the Distance Component to your agent.
@@ -95,7 +95,7 @@ If a single object is found for the tag, the tag is considered found.  These are
 
 # FPS Variables Component  
 This Unity component makes it easy to access FPS type variables in Behavior Designer such as:  
-*Ammo, Weapon, Health, Anger*  
+*Ammo, MeleeWeapons, RangeWeapons, Health, Anger*  
 
 All variables are provided as floats scaled from 0 to 100.0f.   
 This component would be modified to track other types of variables specific to your game.  
