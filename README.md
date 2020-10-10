@@ -15,7 +15,7 @@ These components work with the Opsive Behavior Utility Selector:
 # 1. Task Score Component
 
 Task Score is a Behavior Designer task which returns the score for a particular activity.  The Utility Selector will then run the task with the highest score.  
-![BD Designer](images/behaviorSelector.png)  
+![BD Designer](images/utilitySelector.png)  
 
 ### Parameters
 Any float Behavior designer global variable can be a component of the task score.   You can set a weighting from 0 to 1.0f for each attribute.  The  score is the sum of each attribute’s weight times the attribute’s value.    To provide a consistent basis for scoring:  
