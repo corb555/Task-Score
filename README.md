@@ -49,7 +49,7 @@ Behavior Designer Inspector tab for Task Score for Seek Healthpack.  The second 
 ![x Healthscore](images/healthScore.png)  
 
 ### Reverse Scale
-Since the Utility Selector chooses the task with the highest values, you sometimes need to reverse the scale for  a parameter to have it increase utility.  For example, as a player’s health gets lower, you might want to give a higher result for getting a healthpack.  You can do this by assigning a negative weight.  This is handled as a special case that reverses the scale (100-value) and applies the absolute value of the weight. 
+Since the Utility Selector chooses the task with the highest values, you sometimes need to reverse the scale for  a parameter to have it increase utility.  For example, as a player’s health gets lower, you might want to give a higher result for getting a healthpack.  You can do this by assigning a negative weight.  This is handled as a special case that reverses the scale (100-value) and applies the absolute value of the weight.  Use a negative weight on distance when you want the score to be higher when closer.  Use a negative weight on health when you want the score to be higher when you are weaker. 
 
 ### Upper and Lower Bounds
 You can also specify that an attribute MUST be lower than a value or greater than a value.  If the attribute does not fall in those bounds a score of zero is returned.  For example, you can configure that playerDistance must be less than 8 for a Melee attack.  Note 1: the bound is checked *without* reversing the scale.  Note 2: Upper bound and lower bounds of zero are ignored.
