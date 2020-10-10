@@ -45,6 +45,8 @@ In this case, the score for Seek Healthpack would be higher than Attack Player. 
 Any float Behavior designer global variable can be a component of the task score.   You can set a weighting from 0 to 1.0f for each attribute.  The  score is the sum of each attribute’s weight times the attribute’s value.    To provide a consistent basis for scoring:  
 1. All attributes should be scaled from 0 to 100.0f.  
 1. The sum of the weights should be equal to 1.0f for a high priority task, 0.9f for medium priority, and 0.8f for a low priority activity.  
+Behavior Designer Inspector tab for Task Score for Seek Healthpack:  
+
 ![x Healthscore](images/healthScore.png)  
 
 ### Reverse Scale
