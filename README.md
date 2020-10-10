@@ -69,8 +69,11 @@ This component determines if each object is visible by the agent and if visible,
 
 ### Field of Vision  
 Rather than having a fixed cutoff for whether an item is in or out of field of vision, this considers objects toward the center as visible further off, and objects off to the side must be closer to be considered visible.  It also allows you to "see" an item behind you if it is close.
-The actual calculation is the following (maxDistance, angleWeight, and behindDistance are configurable in the Inspector). Angle is 0 if the object is straight ahead and 90 if directly to the side.  
-maxViewableDistance = Mathf.Max(maxDistance - (angle * angleWeight), behindDistance)
+The actual calculation is the following  
+
+*maxViewableDistance = Mathf.Max(maxDistance - (angle * angleWeight), behindDistance)*  
+
+maxDistance, angleWeight, and behindDistance are configurable in the Inspector. Angle is 0 if the object is straight ahead and 90 if directly to the side.  
 
 ### Explore attribute  
 This also provides an *Explore attribute* which is percent of target types not yet found.  The higher this value, the more useful exploring is.    
