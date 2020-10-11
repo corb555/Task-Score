@@ -6,6 +6,7 @@ Task Score provides the score for an activity to the Opsive Behavior Designer (B
 **[Task Score Component](#Task-Score-Component)**<br>
 **[Distance Component](#Distance-Component)**<br>
 **[FPS Variables Component](#FPS-Variables-Component)**<br>
+**[Troubleshooting](#Troubleshooting)**<br>
 
 # Overview of Components
 
@@ -62,8 +63,9 @@ You can also specify that an attribute MUST be lower than a value or greater tha
 # Distance Component  
 The distance component tracks the distance from the agent to all objects that have the tags listed below.  
 *healthpack, player, ammo, weapon, ambush*  
-It updates BD Global Variables with the same name (with Distance appended).  For a pickup item, the tag should be applied to the item with the collider and
-pickup script.
+It updates BD Global Variables with the same name (with Distance appended).  
+**The tag MUST be applied to the item with the collider.  
+For a pickup item, the tag MUST be applied to the item with the collider and pickup script.**  
 This component determines if each object is visible by the agent and if visible, that object is considered "found". If an object is not been seen for N seconds *and is not static*, the "found" flag is cleared.  The component calculates the distance to all currently "found" objects.  An object tag can have multiple objects, and the value will be for the current closest object with that tag.   0=close, 100=far. *NOTE: 1000 is returned for not known.*  This is an exception to the 0-100 range guideline and will return very high scores for not found items which will  likely make a task using distance to that object not run.
 
 ### Field of Vision  
@@ -112,3 +114,9 @@ This also maintains the Anger score and increases the anger attribute in Attribu
 1. Set the Anger increment value for each damage attack in the Inspector.
 1. In the BD Variables tab, add the Global Variables you want for your project from the Variables above.  
 1. Add an Anger attribute to your agent’s Attribute Manager with min/max of 0,100 and set auto decrement (if you choose).  Set the initial value to zero for a passive agent and to 100 for an aggresive agent or any value in between.  
+
+# Troubleshooting  
+1. For the distance calculator, the game objects must have a tag (weapon, player, healthpack, etc)  *applied to the item with Collider*  
+1. Be sure to Reverse Scale (negative weight) if you want a high score for a close distance, weak health etc.  
+1. Set range checks for scores.  For example, attack player should have a minimum ammo above zero.  With zero ammo it will generate a very low score but that still might be the best score available.  
+1. The sum of the score weights should be equal to 1.0f for a high priority task, 0.9f for medium priority, and 0.8f for a low priority activity.  
