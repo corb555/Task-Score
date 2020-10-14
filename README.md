@@ -61,12 +61,16 @@ You can also specify that an attribute MUST be lower than a value or greater tha
 1. In the BD Inspection window for each Task Score task, add the Global Variables you want for this task and add the weight for each variable. You can also set a "greater than" value and a "less than" value for each attribute.  If the bound is not met, zero is returned for the score. 
 
 # Distance Component  
-The distance component tracks the distance from the agent to all objects that have the tags listed below.  
-*healthpack, player, ammo, weapon, ambush*  
+The distance component tracks the distance from the agent to all objects that have the tags listed in the section below.  
 It updates BD Global Variables with the same name (with Distance appended).  
 **A tag MUST be applied to game objects you want to track  
 For a pickup item, the tag MUST be applied to the item with the pickup script.**  
-This component determines if each object is visible by the agent and if visible, that object is considered "found". If an object is not been seen for N seconds *and is not static*, the "found" flag is cleared.  The component calculates the distance to all currently "found" objects.  An object tag can have multiple objects, and the value will be for the current closest object with that tag.   0=close, 100=far. *NOTE: 1000 is returned for not known.*  This is an exception to the 0-100 range guideline and will return very high scores for not found items which will  likely make a task using distance to that object not run.
+This component determines if each object is visible by the agent and if visible, that object is considered "found". If an object is not been seen for N seconds *and is not static*, the "found" flag is cleared.  The component calculates the distance to all currently "found" objects.  An object tag (e.g. Healthpack) can have multiple objects, and the value will be for the current closest object with that tag.   0=close, 100=far. *NOTE: 1000 is returned for not known.*  This is an exception to the 0-100 range guideline and will return very high scores for not found items which will likely make a task using distance to that object not run.  
+
+### Tags
+The distance component tracks the distance from the agent to all objects that have the tags listed below.  
+*healthpack, player, ammo, weapon, ambush*  
+*weaponAndammo* is a special tag.  This will be tracked as both Weapon and Ammo.  
 
 ### Field of Vision  
 Rather than having a fixed cutoff for whether an item is either in or out of field of vision, this considers objects toward the center as visible further off, and objects off to the side must be closer to be considered visible.  It also allows you to "see" an item behind you if it is close.
