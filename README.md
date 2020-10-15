@@ -1,5 +1,5 @@
 # Task Score
-Task Score provides the score for an activity to the Opsive Behavior Designer (BD) Utility Selector based on weighted attributes you configure. For each activity, you configure which attributes to use and how much to weight each attribute. The BD Utility Selector then runs the activity with the highest score.   For example, a Retrieve HealthPack task could be configured with a high weighting for  health and a HealthPack being nearby.  As the health rating gets worse, the Retrieve HealthPack score gets higher  and eventually becomes the highest rated task for the Utility Selector if there is a known healthpack nearby.  Using weighted attribute task scores can provide more natural and intelligent behavior for an agent's decisions rather than having a tree of binary decisions. *NOTE: These components work with Opsive Behavior Designer but are not affiliated with Opsive or supported by Opsive.*
+Task Score provides the score for an activity to the Opsive Behavior Designer (BD) Utility Selector based on weighted attributes that you configure. For each activity, you configure which attributes to use and how much to weight each attribute. The BD Utility Selector then runs the activity with the highest score.   For example, a Retrieve HealthPack task could be configured with a high weighting for poor health and a HealthPack being nearby.  As the health rating gets worse, the Retrieve HealthPack score gets higher  and eventually becomes the highest rated task for the Utility Selector if there is a healthpack nearby.  Using weighted attribute task scores can provide more natural and intelligent behavior for an agent's decisions rather than having a tree of binary decisions. *NOTE: These components work with Opsive Behavior Designer but are not affiliated with Opsive or supported by Opsive.*
 
 ### Table of Contents
 **[Overview of Components](#Overview-of-Components)**<br>
@@ -10,11 +10,11 @@ Task Score provides the score for an activity to the Opsive Behavior Designer (B
 
 # Overview of Components
 
-These components work with the Opsive Behavior Utility Selector:
+These components work together to provide a task score to Utility Selector:
 
-- *Task Score* - This task provides the score for an activity to the BD Utility Selector based on the weights you assign to various attributes. The Utility Selector then runs the activity with the highest score.  Behavior Designer  global variables are used as the components of the score for a task.
-- *Distance* - This component determines if key object types are visible (healthpacks, etc), calculates their distance, and makes their location and distance available as Behavior Designer variables. This also provides an Explore attribute which indicates that no useful objects or few useful objects have been found.
-- *FPS Variables* - This component makes it easy to access variables used in a basic FPS type game in Behavior Designer such as Ammunition amount, Weapon strength, Health, Explore, and Anger level.  This component would be modified to track the scoring attributes specific to your particular game. This component also increases the anger attribute of the Agent in the BD Attribute Manager when the agent is attacked. 
+- *Task Score* - This task provides the score for an activity to the BD Utility Selector based on the weights you assign to various attributes. The Utility Selector then runs the activity with the highest score.  Behavior Designer global variables are used as the attributes of the score for a task.
+- *Distance* - This component determines if key object types are visible (player, healthpacks, etc), calculates their distance, and makes their location and distance available as Behavior Designer variables. This also provides an Explore attribute which indicates that no key objects objects have been found and exploring would be useful.
+- *FPS Variables* - This component makes it easy to access variables used in a basic FPS type game in Behavior Designer such as Ammunition amount, Weapon strength, Health, Explore, and Anger level all scaled from 0 to 100.  This component would be modified to track the scoring attributes specific to your particular game. 
 
 # *Component Details*  
 
@@ -54,6 +54,9 @@ Since the Utility Selector chooses the task with the highest values, you sometim
 
 ### Upper and Lower Bounds
 You can also specify that an attribute MUST be lower than a value or greater than a value.  If the attribute does not fall in those bounds a score of zero is returned.  For example, you can configure that playerDistance must be less than 8 for a Melee attack.  Note 1: the bound is checked *without* reversing the scale.  Note 2: Upper bound and lower bounds of zero are ignored.
+
+### Success Status of Child Task  
+This monitors the Success/Failure status of the child activity.  If the child activity fails, the score is reduced for the next N ticks.  
 
 ### Setup  
 1. Follow the Setup instructions for the Distance component, Anger Component, and Shooter Variables component below, before setting up this component. 
