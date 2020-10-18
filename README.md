@@ -1,5 +1,5 @@
 # Task Score
-Task Score provides the score for an activity to the Opsive Behavior Designer (BD) Utility Selector based on weighted attributes that you configure. For each activity, you configure which attributes to use and how much to weight each attribute. The BD Utility Selector then runs the activity with the highest score.   For example, a Retrieve HealthPack task could be configured with a high weighting for poor health and a HealthPack being nearby.  As the health rating gets worse, the Retrieve HealthPack score gets higher  and eventually becomes the highest rated task for the Utility Selector if there is a healthpack nearby.  Using weighted attribute task scores can provide more natural and intelligent behavior for an agent's decisions rather than having a tree of binary decisions. *NOTE: These components work with Opsive Behavior Designer but are not affiliated with Opsive or supported by Opsive.*
+Task Score provides the score for an activity to the Opsive Behavior Designer (BD) Utility Selector based on weighted attributes that you configure. For each activity, you configure which attributes to use and how much to weight each attribute. The BD Utility Selector then runs the activity with the highest score.   For example, a Retrieve HealthPack task could be configured with a high weighting for poor health and a HealthPack being nearby.  As the health rating gets worse, the Retrieve HealthPack score gets higher and if there is a healthpack nearby eventually becomes the highest rated task for the Utility Selector.  Using weighted attribute task scores can be easier and provide more natural behavior for an agent's decisions rather than having a tree of binary decisions. *NOTE: These components work with Opsive Behavior Designer but are not affiliated with Opsive or supported by Opsive.*
 
 ### Table of Contents
 **[Overview of Components](#Overview-of-Components)**<br>
@@ -12,9 +12,9 @@ Task Score provides the score for an activity to the Opsive Behavior Designer (B
 
 These components work together to provide a task score to Utility Selector:
 
-- *Task Score* - This task provides the score for an activity to the BD Utility Selector based on the weights you assign to various attributes. The Utility Selector then runs the activity with the highest score.  Behavior Designer global variables are used as the attributes of the score for a task.
-- *Distance* - This component determines if key object types are visible (player, healthpacks, etc), calculates their distance, and makes their location and distance available as Behavior Designer variables. This also provides an Explore attribute which indicates that no key objects objects have been found and exploring would be useful.
-- *FPS Variables* - This component makes it easy to access variables used in a basic FPS type game in Behavior Designer such as Ammunition amount, Weapon strength, Health, Explore, and Anger level all scaled from 0 to 100.  This component would be modified to track the scoring attributes specific to your particular game. 
+- *Task Score* - This Task provides the score for an activity to the BD Utility Selector based on the weights you assign to various attributes. The Utility Selector then runs the activity with the highest score.  Behavior Designer global variables are used as the attributes of the score for a task.
+- *Distance* - This component determines if key object types are visible (player, healthpacks, etc), calculates their distance, and makes their location and distance available as Behavior Designer variables. This also provides an Explore attribute which indicates that no key objects objects have been found and it would be useful to explore.
+- *FPS Variables* - This component makes it easy for Behavior Designer to access variables used in a basic FPS type game such as Ammunition amount, Weapon strength, Health, Explore, and Anger level.  This component would be modified to track the scoring attributes specific to your particular game. 
 
 # *Component Details*  
 
@@ -25,21 +25,21 @@ Task Score is a Behavior Designer task which returns the score for a particular 
 
 ### FPS Example
 
-In this example for an FPS game, the agent is currently equal distance from the player and from the healthpack and its health is low. The Behavior variables values currently are:  
+In this example for an FPS game, the agent currently has low health and is 30 units from both the player and from the healthpack. The Behavior variables values currently are:  
   
 *Health=20, HealthPackDistance=30, PlayerDistance=30*  
 
 We have two tasks to score:  1) Seek Healthpack, and 2) Attack Player.  
 
 *Task Score for “Seek Heathpack”*  
-Weights were configured to:  Health= -0.6, HealthPackDistance=-0.4  
-**Score= 76** = (80 * 0.6) + (70 * 0.4)   (Note the Health score is reversed to 80 because the weight is negative.  The lower our health, the higher we want the score.  Distance is also reversed to reward being closer, not distant.)  
+Task Score weights for this were configured to:  Health= -0.6, HealthPackDistance=-0.4  
+**Score= 76** = (80 * 0.6) + (70 * 0.4)   (Note the Health score is reversed to 80 because the weight is negative (see Reverse Scale below).  The lower our health, the higher we want the score.  Distance is also reversed to reward being closer, not distant.)  
   
 *Task Score for “Attack Player”*  
-Weights were configured to:   Health= 0.6, PlayerDistance=-0.4  
+Task Score weights for this were configured to:   Health= 0.6, PlayerDistance=-0.4  
 **Score= 40** = (20 * 0.6) + (70 * 0.4)   
 
-In this case, the score for Seek Healthpack would be higher than Attack Player.  If Health was 80, the score for Attack Player would be higher. You  might also  add attributes for Weapon power and Ammo for the Attack Player Score.
+In this case, the score for Seek Healthpack is higher than Attack Player.  If Health improved, the score for Attack Player would be higher. 
 
 ### Parameters
 Any float Behavior designer global variable can be a component of the task score.   You can set a weighting from 0 to 1.0f for each attribute.  The  score is the sum of each attribute’s weight times the attribute’s value.    To provide a consistent basis for scoring:  
