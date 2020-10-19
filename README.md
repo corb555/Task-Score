@@ -33,7 +33,7 @@ We have two tasks to score:  1) Seek Healthpack, and 2) Attack Player.
 
 *Task Score for “Seek Heathpack”*  
 Task Score weights for this were configured to:  Health= -0.6, HealthPackDistance=-0.4  
-**Score= 76** = (80 * 0.6) + (70 * 0.4)   (Note the Health score is reversed to 80 because the weight is negative (see Reverse Scale below).  The lower our health, the higher we want the score.  Distance is also reversed to reward being closer, not distant.)  
+**Score= 76** = (80 * 0.6) + (70 * 0.4)   (Note the Health score is reversed to 80 because the weight is negative (see Reverse Scale below).  The lower our health, the higher we want the score.  Distance is also reversed to reward being closer, not distant.    
   
 *Task Score for “Attack Player”*  
 Task Score weights for this were configured to:   Health= 0.6, PlayerDistance=-0.4  
@@ -59,7 +59,8 @@ You can also specify that an attribute MUST be lower than a value or greater tha
 This monitors the Success/Failure status of the child activity.  If the child activity fails, the score is reduced for the next N ticks.  
 
 ### Setup  
-1. Follow the Setup instructions for the Distance component, Anger Component, and Shooter Variables component below, before setting up this component. 
+1. Follow the Setup instructions for the Distance component, and FPS Variables component below, before setting up this component. 
+1. Copy Task Score.cs to your assets folder.
 1. In the Behavior Designer edit window, add a Task Score Task for each activity under Utility Selector and connect it to the Utility Selector with the actions connected below it.  Those components will be necessary to provide attributes for scoring.
 1. In the BD Inspection window for each Task Score task, add the Global Variables you want for this task and add the weight for each variable. You can also set a "greater than" value and a "less than" value for each attribute.  If the bound is not met, zero is returned for the score. 
 
@@ -89,16 +90,18 @@ If a single object is found for the tag, the tag is considered found.  These are
 *healthpack, player, ammo, weapon*
 
 ### Distance Variables  
-*HealthPackDistance* - 100=not found, 99=far, 0=near  
-*PlayerDistance* - 100=not found, 99=far, 0=near  
-*AmmoDistance* - 100=not found, 99=far, 0=near  
-*WeaponDistance* - 100=not found, 99=far, 0=near  
-*AmbushDistance* - 100=not found, 99=far, 0=near  
+*HealthPackDistance* - 1000=not found, 100=far, 0=near  
+*PlayerDistance* - 1000=not found, 99=far, 0=near  
+*AmmoDistance* - 1000=not found, 99=far, 0=near  
+*WeaponDistance* - 1000=not found, 99=far, 0=near  
+*AmbushDistance* - 1000=not found, 99=far, 0=near  
 *Explore* - 100=100% of target types unfound, 0=0% of target types unfound.  
 
 ### Setup
-1. Add the Distance Component to your agent.
-1. In the Behavior Designer Variables tab, add the Global Variables you want for your project from the Variables above.  
+1. Copy Distance.cs to your assets folder.  
+1. Assign the tags listed above to the components you want to track.
+1. Add the Distance Component to your Agent.
+1. In the Behavior Designer Variables tab, add the Global Variables you want for your project from the Distance Variables listed above.  
 ![x bdVariables](images/bdVariables.png)
 
 # FPS Variables Component  
