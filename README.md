@@ -23,7 +23,7 @@ These components work together to provide a task score to Utility Selector:
 Task Score is a Behavior Designer task which returns the score for a particular activity based on the weights you assign to various attributes.  The Utility Selector will then run the task with the highest score.  Task Score is configured with different attributes and weights for each activity.
 ![x utilitySelector](images/utilitySelector.png)  
 
-### FPS Example
+### Scoring Example
 
 In this example for an FPS game, the agent currently has low health and is 30 units from both the player and from the healthpack. The Behavior variables values currently are:  
   
