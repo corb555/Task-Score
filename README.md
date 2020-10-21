@@ -131,3 +131,5 @@ This also maintains the Anger score and increases the anger attribute in Attribu
 1. Use a Reverse Scale (negative weight) if you want a high score for a *close* distance, *weak* health etc.  Almost all items will use negative weights. Double check any items with positive weight.
 1. Set range checks for scores.  For example, attack player should have a minimum ammo above zero.  With zero ammo it will generate a very low score but that may still be the best score available.  
 1. The sum of the score weights should be equal to 1.0f for a high priority task, 0.9f for medium priority, and 0.8f for a low priority activity.  
+1. The action under a task, must end up altering some of the scores for tasks otherwise you will get stuck.  
+1. Make sure that Seeks have been set up to have correct targets.
