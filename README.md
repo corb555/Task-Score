@@ -138,4 +138,5 @@ This also maintains the Anger score and increases the anger attribute in Attribu
 1. The action under a task, MUST end up altering at least one of the scores for that task otherwise you will get stuck running the same task.
 1. Make sure that Seek and Flee have been set up to have correct targets.
 1. You should have one Task which will run when everything else has a low score. This task should not have any upper or lower bounds.
+1. Make sure you have an up to date bake of the AI Navmesh for your scene.
 1. **TODO** Use the spreadsheet below to determine optimal weights.  The spreadsheet allows you to enter all the tasks and will calculate their score as you change variable values.
