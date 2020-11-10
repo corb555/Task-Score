@@ -39,7 +39,7 @@ Task Score weights for this were configured to:  Health= -0.6, HealthPackDistanc
 Task Score weights for this were configured to:   Health= 0.6, PlayerDistance=-0.4  
 **Score= 40** = (20 * 0.6) + (70 * 0.4)   
 
-In this case, the score for Seek Healthpack is higher than Attack Player.  If Health improved, the score for Attack Player would be higher. 
+In this case, the score for Seek Healthpack is higher than Attack Player.  If Health improved, the score for Attack Player would be higher.  This is a simplified example, in a real score you might also want to include ammo amount, weapon strength, anger, etc.
 
 ### Parameters
 Any float Behavior Designer global variable can be a component of the task score.   You can set a weighting from 0 to 1.0f for each attribute.  The  score is the sum of each attribute’s weight times the attribute’s value.    To provide a consistent basis for scoring:  
