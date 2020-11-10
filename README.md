@@ -76,7 +76,7 @@ This component determines if each object is visible by the agent and if visible,
 ### Tags
 The distance component tracks the distance from the agent to all objects that have the tags listed below.  
 *healthpack, player, ammo, weapon, ambush*  
-*weaponAndammo* is a special tag.  **TODO** - This will be tracked as both Weapon and Ammo.  
+*ambush* is used for a location for agents to gather to ambush a player
 
 ### Field of Vision  
 Rather than having a fixed cutoff for whether an item is either in or out of field of vision, objects toward the center of view are visible further off, and objects off to the side must be closer to be visible.  It also allows marks an item behind you as visible if it is very close.
