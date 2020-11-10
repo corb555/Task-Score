@@ -10,11 +10,13 @@ Task Score provides a score for an activity in a Unity game to the Opsive Behavi
 
 # Overview of Components
 
-These three components work together to provide a task score to Utility Selector:
+These three components work together to provide a task score to Behavior Designer Utility Selector:
 
 - *Task Score* - This Behavior Designer Task provides the score for an activity to the BD Utility Selector based on the weights you assign to various attributes. The Utility Selector then runs the activity with the highest score.  Behavior Designer global variables are used as the attributes of the score for a task.
 - *Distance* - This script determines if  objects with specific tags are visible (player, healthpack, etc), calculates their distance, and makes their location and distance available as Behavior Designer variables. This also provides an Explore attribute which indicates that few key objects objects have been found and it would be useful to explore.  Distances are normalized from 0 to 100.
 - *FPS Variables* - This script makes it easy for Behavior Designer to access variables used in a basic FPS type game, such as: Ammunition amount, Weapon strength, Health, Explore, and Anger level.  This component would be modified to track the scoring attributes specific to your particular game. All variables are normalized from 0 to 100.
+
+Behavior Designer from Opsive is required for Task Score to work.
 
 # *Component Details*  
 
