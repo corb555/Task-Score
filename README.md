@@ -135,7 +135,7 @@ This also maintains the Anger score and increases the anger attribute in Attribu
 # Troubleshooting  
 1. In the Behavior Designer Inspector for the Task Score task, enable the magnifying glass on "Sc".  This will display the realtime value of the task score on the behavior diagram.
 1. All the game objects you want to track must have a tag (weapon, player, healthpack, etc) for the distance calculator.  Make sure the player is tagged, healthpacks are tagged, weapons are tagged.  The weapon names must match a name listed in WeaponDict in FPSVariables.cs.
-1. Use a Reverse Scale (negative weight) if you want a high score for a *close* distance, *weak* health etc.  **Almost all items will use negative weights.** Double check any items with positive weight.
+1. Use a Reverse Scale (negative weight) if you want a high score for a *close* distance, *weak* health etc.  **Most  items will need a reverse score and use negative weights.** Double check any items with positive weight.
 1. Set upper/lower bounds for scores where appropriate.  For example, attack player should have a minimum ammo greater than zero.  With zero ammo it will generate a very low score but that might still be the best score available.  
 1. The sum of the weights should be equal to 1.0f for a high priority task, 0.9f for medium priority, and 0.8f for a low priority activity.  
 1. The action under a task, MUST end up altering at least one of the scores for that task otherwise you will get stuck running the same task.
@@ -143,3 +143,5 @@ This also maintains the Anger score and increases the anger attribute in Attribu
 1. You should have one Task which will run when everything else has a low score. This task should not have any upper or lower bounds.
 1. Make sure you have an up to date bake of the AI Navmesh for your scene.
 1. **TODO** Use the spreadsheet below to determine optimal weights.  The spreadsheet allows you to enter all the tasks and will calculate their score as you change variable values.
+
+*Copyright 2020 Michael Herbert*
