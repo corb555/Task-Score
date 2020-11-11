@@ -16,7 +16,7 @@ These three components work together to provide a task score to Behavior Designe
 - *Distance* - This script determines if  objects with specific tags are visible (player, healthpack, etc), calculates their distance, and makes their location and distance available as Behavior Designer variables. This also provides an Explore attribute which indicates that few key objects objects have been found and it would be useful to explore.  Distances are normalized from 0 to 100.
 - *FPS Variables* - This script makes it easy for Behavior Designer to access variables used in a basic FPS type game, such as: Ammunition amount, Weapon strength, Health, Explore, and Anger level.  This component would be modified to track the scoring attributes specific to your particular game. All variables are normalized from 0 to 100.
 
-Behavior Designer from Opsive is required for Task Score to work.
+Behavior Designer from Opsive is required for Task Score to work and Ultimate Character Controller from Opsive is required for FPS/AI movement.
 
 # *Component Details*  
 
