@@ -22,7 +22,8 @@ Behavior Designer from Opsive is required for Task Score to work and Ultimate Ch
 
 # Task Score Component
 
-Task Score is a Behavior Designer task which returns the score for a particular activity based on the weights you assign to various attributes.  The Utility Selector will then run the task with the highest score.  Task Score is configured with different attributes and weights for each activity.
+Task Score is a Behavior Designer task which returns the score for a particular activity based on the weights you assign to various attributes.  The Utility Selector will then run the task with the highest score.  Task Score is configured with different attributes and weights for each activity.  
+*Figure 1 - Utility selector with Task Score*
 ![x utilitySelector](images/utilitySelector.png)  
 
 ### Task Scoring Example
@@ -47,7 +48,8 @@ In this case, the score for Seek Healthpack is higher than Attack Player.  If He
 Any float Behavior Designer global variable can be a component of the task score.   You can set a weighting from 0 to 1.0f for each attribute.  The  score is the sum of each attribute’s weight times the attribute’s value.    To provide a consistent basis for scoring:  
 1. All attributes should be scaled from 0 to 100.0f. The scripts in this package already do that for distance and FPS Variables. 
 1. The sum of the weights of all the attributes should be equal to 1.0f for a high priority task, 0.9f for medium priority, and 0.8f for a low priority activity.  
-Behavior Designer Inspector tab for Task Score for Seek Healthpack.  The second attribute is distance to the healthpack.  Note that an upper bound of 80 is set.  If health is over 80, this will return a score of zero no matter how close we are to a healthpack.  
+*Figure 2 - Behavior Designer Inspector tab for Task Score for Seek Healthpack*  
+The second attribute is distance to the healthpack.  Note that an upper bound of 80 is set.  If health is over 80, this will return a score of zero no matter how close we are to a healthpack.  
 
 ![x Healthscore](images/healthScore.png)  
 
@@ -65,7 +67,7 @@ You can also specify that an attribute MUST be lower than a value or greater tha
 1. Before setting up this component follow the Setup instructions for the Distance component, and FPS Variables component below.
 1. Copy Task Score.cs to your assets folder.
 1. In the Behavior Designer edit window, add a Task Score Task for each activity under Utility Selector and connect it to the Utility Selector with the actions connected below it.  Those components will be necessary to provide attributes for scoring.
-1. In the BD Inspection window for each Task Score task, add the Global Variables you want for this task and add the weight for each variable. You can also set a "greater than" value and a "less than" value for each attribute.  If the bound is not met, zero is returned for the score. 
+1. In the BD Inspection window for each Task Score task, add the Global Variables you want for this task and add the weight for each variable. See figure 2 above. You can also set a "greater than" value and a "less than" value for each attribute.  If the bound is not met, zero is returned for the score. 
 
 # Distance Component  
 The distance component tracks the distance from the agent to all objects that have the tags listed in the section below.  
@@ -104,6 +106,7 @@ If a single object is found for the tag, the tag is considered found.  These are
 1. Copy Distance.cs to your assets folder and add it to your Agent.  
 1. Assign the tags listed above to the components you want to track.  
 1. In the Behavior Designer Variables tab, add the Global Variables you want for your project from the Distance Variables listed above.  
+*Figure 3 - Behavior Designer Variables tab*
 ![x bdVariables](images/bdVariables.png)
 
 # FPS Variables Component  
