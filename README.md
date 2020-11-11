@@ -61,6 +61,7 @@ You can also specify that an attribute MUST be lower than a value or greater tha
 **TODO** - This monitors the Success/Failure status of the child activity.  If the child activity fails, the score is reduced for the next N ticks.  For example, a "Flee Player" task is called but the agent cannot move further from player and the task returns fail, or a "Pickup Item" task is called but the Agent is unable to pick up the item.
 
 ### Setup  
+1. Ensure you can run the demoes in Opsvive's Behavior Designer.
 1. Before setting up this component follow the Setup instructions for the Distance component, and FPS Variables component below.
 1. Copy Task Score.cs to your assets folder.
 1. In the Behavior Designer edit window, add a Task Score Task for each activity under Utility Selector and connect it to the Utility Selector with the actions connected below it.  Those components will be necessary to provide attributes for scoring.
