@@ -101,9 +101,8 @@ If a single object is found for the tag, the tag is considered found.  These are
 *Explore* - 100=100% of target types unfound, 0=0% of target types unfound.  
 
 ### Setup
-1. Copy Distance.cs to your assets folder.  
-1. Assign the tags listed above to the components you want to track.
-1. Add the Distance Component to your Agent.
+1. Copy Distance.cs to your assets folder and add it to your Agent.  
+1. Assign the tags listed above to the components you want to track.  
 1. In the Behavior Designer Variables tab, add the Global Variables you want for your project from the Distance Variables listed above.  
 ![x bdVariables](images/bdVariables.png)
 
@@ -125,7 +124,7 @@ This also maintains the Anger score and increases the anger attribute in Attribu
 *Ammo* - 100=full, 0=empty.  Note: this is the percent of "adequate" ammunition, not the number of bullets.  A rocket launcher with 12 rockets would return a score of 100.  An assault rifle with 12 bullets would return a score of 5.
 
 ### Setup  
-1. Add the FPS Variables Component to your agent.
+1. Copy the FPSVariables.cs script to your assets and add it to your agent.
 1. Set the Anger increment value for a damage attack in the Inspector.
 1. In the BD Variables tab, add the Global Variables you need for your project from the FPS Variables list above.  
 1. Add an Anger attribute to your agent’s Attribute Manager with min/max of 0,100 and set auto decrement (if you choose).  Set the initial value to zero for a passive agent and to 100 for an aggresive agent or any value in between.  
