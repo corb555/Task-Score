@@ -1,5 +1,5 @@
 # Task Score
-**Task Score** provides a score for an activity in a Unity game to the Opsive Behavior Designer (BD) **Utility Selector** based on weighted attributes that you configure. For each activity, you configure which attributes to use and how much to weight each attribute. The BD Utility Selector then runs the activity with the highest Task Score.   For example, a Retrieve HealthPack task could be configured with a high weighting for poor health and a HealthPack being nearby.  As the health rating gets worse, the Retrieve HealthPack score gets higher and if there is a healthpack nearby eventually may become the highest rated task for the Utility Selector.  Using weighted attribute task scores can be easier and provide more natural behavior for an agent's decisions rather than having a complex tree of binary decisions for every case. *NOTE: These components work with Opsive Behavior Designer but are not affiliated with Opsive or supported by Opsive.*
+**Task Score** provides a score for an activity in a Unity game to the Opsive Behavior Designer (BD) **Utility Selector** based on weighted attributes that you configure. For each activity, you configure which attributes to use and how much to weight each attribute. The BD Utility Selector then runs the activity with the highest Task Score.   For example, a Retrieve HealthPack task could be configured with a high weighting for poor health and a HealthPack being nearby.  As the health rating gets worse, the Retrieve HealthPack score gets higher and if there is a healthpack nearby eventually may become the highest rated task for the Utility Selector.  Using weighted attribute task scores can be easier and provide more natural behavior for an agent's decisions rather than having a complex tree of binary decisions for every case. *NOTE: These components require Opsive Behavior Designer but are not affiliated with Opsive or supported by Opsive.*
 
 ### Table of Contents
 **[Overview of Components](#Overview-of-Components)**<br>
@@ -10,7 +10,7 @@
 
 # Overview of Components
 
-These three components work together to provide a task score to Behavior Designer Utility Selector:
+These three components work together to provide a task score to Opsive Behavior Designer **Utility Selector**:
 
 - *Task Score* - This Behavior Designer Task provides the score for an activity to the BD Utility Selector based on the weights you assign to various attributes. The Utility Selector then runs the activity with the highest score.  Behavior Designer global variables are used as the attributes of the score for a task.
 - *Distance* - This script determines if  objects with specific tags are visible (player, healthpack, etc), calculates their distance, and makes their location and distance available as Behavior Designer variables. This also provides an Explore attribute which indicates that few key objects objects have been found and it would be useful to explore.  Distances are normalized from 0 to 100.
@@ -136,6 +136,7 @@ This also maintains the Anger score and increases the anger attribute in Attribu
 1. Add an Anger attribute to your agent’s Attribute Manager with min/max of 0,100 and set auto decrement (if you choose).  Set the initial value to zero for a passive agent and to 100 for an aggresive agent or any value in between.  
 
 # Troubleshooting  
+1. Behavior Designer installation - make sure you can successfully run the BD demoes.
 1. Debug info - In the Behavior Designer Inspector for the Task Score task, enable the magnifying glass on "Sc".  This will display the realtime value of the task score on the Behavior Diagram.
 1. Debug info - For each script, enable DebugFlag to log debugging information.
 1. Tags - All the game objects you want to track must have a tag (weapon, player, healthpack, etc) for the distance calculator.  Make sure the player is tagged, healthpacks are tagged, weapons are tagged.  The weapon names must match a name listed in WeaponDict in FPSVariables.cs. For a pickup item, the tag MUST be applied to the item with the pickup script.** 
