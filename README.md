@@ -13,7 +13,7 @@
 These three components work together to provide a task score to Opsive Behavior Designer **Utility Selector**:
 
 - *Task Score* - This Behavior Designer Task provides the score for an activity to the BD Utility Selector based on the weights you assign to various attributes. The Utility Selector then runs the activity with the highest score.  Behavior Designer global variables are used as the attributes of the score for a task.
-- *Distance* - This script determines if  objects with specific tags are visible (player, healthpack, etc), calculates their distance, and makes their location and distance available as Behavior Designer variables. Distances are normalized from 0 to 100. This also provides an *Explore* attribute which indicates that whether key objects objects haven't yet been found and it would be useful to explore.  
+- *Distance* - This script determines if  objects with specific tags are visible (player, healthpack, etc), calculates their distance, and makes their location and distance available as Behavior Designer variables. Distances are normalized from 0 to 100. This also provides an *Explore* attribute which indicates whether key objects haven't been found yet and it would be useful to explore.  
 - *FPS Variables* - This is a sample script that makes it easy for Behavior Designer to access variables used in a basic FPS type game, such as: Ammunition amount, Weapon strength, Health, Explore, and Anger level.  This script would be modified or replaced to track the scoring attributes specific to your particular game. All variables are normalized from 0 to 100.
 
 *Behavior Designer from Opsive is required for Task Score to work and Ultimate Character Controller from Opsive is required for FPS/AI movement.*
