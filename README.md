@@ -92,6 +92,9 @@ The calculation is the following:
 
 maxDistance, angleWeight, and behindDistance are configurable in the Inspector. Angle of 0 is straight ahead and 90 is directly to the side.  
 
+*Figure 3 - Viewable distance with maximum set to 30*
+![x viewableDistance](images/viewableDistance.png)  
+
 ### Explore attribute  
 This also provides an *Explore attribute* which is based on how many key components haven't yet been found.  The higher this value, the more useful exploring is.    
 If a single object is found for the tag, the tag is considered found.  These are the tags tracked for the explore value:   
@@ -111,7 +114,7 @@ There is also a location Variable for each of the above, e.g. PlayerLocation
 1. Copy Distance.cs to your assets folder and add it to your Agent.  
 1. Assign the tags listed above to the components you want to track.  
 1. In the Behavior Designer Variables tab, add the Global Variables you want for your project from the Distance Variables listed above.  
-*Figure 3 - Behavior Designer Variables tab*
+*Figure 4 - Behavior Designer Variables tab*
 ![x bdVariables](images/bdVariables.png)
 
 # FPS Variables Script  
