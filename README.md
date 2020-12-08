@@ -73,16 +73,16 @@ You can also specify that an attribute MUST be lower than a upper bound or great
 1.  You must have the same number of entries for the weights, and upper and lower bounds.
 
 # Distance Script  
-The distance component tracks the distance from the agent to all objects that have the tags listed in the section below.  
-It updates BD Global Variables with the same name (with Distance appended).  
-**A tag MUST be applied to game objects you want to track  
-For a pickup item, the tag MUST be applied to the item with the pickup script.**  
-This component determines if each object is visible by the agent and if visible, that object is considered "found". If an object has not been seen for N seconds *and is not static* (for example the player), the "found" flag is cleared.  The component calculates the distance to all currently "found" objects.  An object tag (e.g. Healthpack) can have multiple objects, and the value will be for the closest object with that tag.   0=close, 100=far. *NOTE: 1000 is returned for not known.*  This is an exception to the 0-100 range guideline and will return very high scores for not found items which will likely make a task using distance to that object very unlikely to run.  A task can also set an upper limit of 100 so it will not run for items that have not been found.
+The Distance script tracks the distance from the agent to objects that have the tags listed in the section below and tracks their current location.  
+It updates BD Global Variables with the same name (with Distance appended and Location appended).  
+*A tag MUST be applied to game objects you want to track*  
+*For a pickup item, the tag MUST be applied to the item with the pickup script.*  
+This script determines if each object is visible by the agent and if visible, that object is considered "found". If an object has not been seen for N seconds *and is not static*, the "found" flag is cleared and distance is marked unknown.  The script calculates the distance to all currently "found" objects.  A tag (e.g. Healthpack) can have multiple objects, and the distance will be for the closest object with that tag.   0=close, 100=far. *NOTE: 1000 is returned for not known.*  This is an exception to the 0-100 range guideline and will create very high scores for not found items, which will likely make a task using that distance unlikely to run.  A task can also set an upper limit of 100 so it will not run for items that have not been found.  The Distance script also stores the location of each known object.
 
 ### Tags
-The distance component tracks the distance from the agent to all objects that have the tags listed below.  
+The distance component tracks the distance from the agent to objects that have the tags listed below:  
 *healthpack, player, ammo, weapon, ambush*  
-*ambush* is used for a location for agents to gather to ambush a player
+*ambush* can be used for a location for agents to gather and wait, potentially to ambush a player
 
 ### Field of Vision  
 Rather than having a fixed cutoff for whether an item is either in or out of field of vision, objects toward the center of view are visible further off, and objects off to the side must be closer to be visible.  It also allows marks an item behind you as visible if it is very close.
@@ -103,6 +103,8 @@ If a single object is found for the tag, the tag is considered found.  These are
 *AmmoDistance* - 1000=not found, 100=far, 0=near  
 *WeaponDistance* - 1000=not found, 100=far, 0=near  
 *AmbushDistance* - 1000=not found, 100=far, 0=near  
+There is also a location Variable for each of the above, e.g. PlayerLocation
+
 *Explore* - 100=100% of target types unfound, 0=0% of target types unfound.  
 
 ### Setup
@@ -113,7 +115,7 @@ If a single object is found for the tag, the tag is considered found.  These are
 ![x bdVariables](images/bdVariables.png)
 
 # FPS Variables Script  
-This Unity component makes it easy to access normalized FPS type variables in Behavior Designer such as:  
+This  script makes it easy to access normalized FPS type variables in Behavior Designer such as:  
 *Ammo, MeleeWeapons, RangeWeapons, Health, Anger*  
 
 All variables are provided as floats scaled from 0 to 100.0f.   
