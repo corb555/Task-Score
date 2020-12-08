@@ -14,7 +14,7 @@ These three components work together to provide a task score to Opsive Behavior 
 
 - *Task Score* - This Behavior Designer Task provides the score for an activity to the BD Utility Selector based on the weights you assign to various attributes. The Utility Selector then runs the activity with the highest score.  Behavior Designer global variables are used as the attributes of the score for a task.
 - *Distance* - This script determines if  objects with specific tags are visible (player, healthpack, etc), calculates their distance, and makes their location and distance available as Behavior Designer variables. Distances are normalized from 0 (near) to 100 (far). This also provides an *Explore* attribute which indicates whether key objects haven't been found yet and it would be useful to explore.  
-- *FPS Variables* - This is a sample script that makes it easy for Behavior Designer to access variables used in a basic FPS type game, such as: Ammunition amount, Weapon strength, Health, Explore, and Anger level.  This script would be modified or replaced to track the task scoring attributes specific to your particular game. All variables are normalized from 0 to 100.
+- *FPS Variables* - This is a sample script that makes it easy for Behavior Designer to access variables used in a basic FPS type game, such as: Ammunition amount, Weapon strength, Health, Explore, and Anger level.  This script would be modified or replaced to track the task scoring attributes specific to your particular game. All variables are normalized from 0 to 100.0.
 
 *Behavior Designer from Opsive is required for Task Score to work and Ultimate Character Controller from Opsive is required for FPS/AI movement.*
 
@@ -127,9 +127,10 @@ This also maintains the Anger score and increases the anger attribute in Attribu
 ### FPS Variables
 *Health* - 100=healthy, 0=dead  Agent Health   
 *Anger* - 100=angry, 0=calm.  Damage to the agent increases anger.  Time decreases anger (based on the rate set in Attribute Manager)   
-*MeleeWeapons* - 0 none, 100=most powerful weapon.  Power of equipped weapon. For example: 40 Club, 60 Knife, 65 Sword.  
-*RangeWeapons* - 0 none, 100=most powerful weapon.  Power of equipped weapon. For example:  75 Pistol, 85 Assault Rifle 95 Rocket Launcher.      
-*Ammo* - 100=full, 0=empty.  Note: this is the percent of "adequate" ammunition, not the number of bullets.  A rocket launcher with 12 rockets would return a score of 100.  An assault rifle with 12 bullets would return a score of 5.
+*WeaponStrength* -  0 none, 100=most powerful weapon.  Power of equipped weapon. For example: 40 Club, 60 Knife, 65 Sword, 95 Rocket Launcher  
+*MeleeWeapons* - :no_entry_sign: 0 none, 100=most powerful weapon.  Power of equipped weapon. For example: 40 Club, 60 Knife, 65 Sword.  
+*RangeWeapons* - :no_entry_sign: 0 none, 100=most powerful weapon.  Power of equipped weapon. For example:  75 Pistol, 85 Assault Rifle 95 Rocket Launcher.      
+*Ammo* - 100=full, 0=empty.  *Note: this is the percent of "adequate" ammunition, not the number of bullets.*  A rocket launcher with 12 rockets would return a score of 100.  An assault rifle with 12 bullets would return a score of 5.
 
 ### Setup  
 1. Copy the FPSVariables.cs script to your assets and add it to your agent.
