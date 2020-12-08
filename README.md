@@ -85,12 +85,12 @@ The distance component tracks the distance from the agent to objects that have t
 *ambush* can be used for a location for agents to gather and wait, potentially to ambush a player
 
 ### Field of Vision  
-Rather than having a fixed cutoff for whether an item is either in or out of field of vision, objects toward the center of view are visible further off, and objects off to the side must be closer to be visible.  It also allows marks an item behind you as visible if it is very close.
-The actual calculation is the following  
+Rather than having a fixed angle cutoff with an item either in or out of field of vision, objects toward the center of view are visible further off, and objects off to the side must be closer to be visible.  This script also allows marks an item behind you as visible if it is close (within behindDistance).  If DebugFlag is set, this will log the cutoff distance for each angle of field of vision.
+The calculation is the following:  
 
 *maxViewableDistance = Mathf.Max(maxDistance - (angle * angleWeight), behindDistance)*  
 
-maxDistance, angleWeight, and behindDistance are configurable in the Inspector. Angle is 0 if object is straight ahead and 90 if object directly to the side.  
+maxDistance, angleWeight, and behindDistance are configurable in the Inspector. Angle of 0 is straight ahead and 90 is directly to the side.  
 
 ### Explore attribute  
 This also provides an *Explore attribute* which is based on how many key components haven't yet been found.  The higher this value, the more useful exploring is.    
