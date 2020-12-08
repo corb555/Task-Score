@@ -85,14 +85,14 @@ The distance component tracks the distance from the agent to objects that have t
 *ambush* can be used for a location for agents to gather and wait, potentially to ambush a player
 
 ### Field of Vision  
-Rather than having a fixed angle cutoff with an item either in or out of field of vision, objects toward the center of view are visible further off, and objects off to the side must be closer to be visible.  This script also allows marks an item behind you as visible if it is close (within behindDistance).  If DebugFlag is set, this will log the cutoff distance for each angle of field of vision.
+Rather than having a fixed angle cutoff with an item either in or out of field of vision, this script allows objects toward the center of view to be visible further off, and objects off to the side must be closer to be visible.  This script also allows marks an item behind you as visible if it is close (anything within minDistance is visible even if behind you).  If DebugFlag is set, this will log the cutoff distance for each angle of field of vision.
 The calculation is the following:  
 
-*maxViewableDistance = Mathf.Max(maxDistance - (angle * angleWeight), behindDistance)*  
+*viewableDistance = Mathf.Max(maxDistance - (angle * angleWeight), minDistance)*  
 
-maxDistance, angleWeight, and behindDistance are configurable in the Inspector. Angle of 0 is straight ahead and 90 is directly to the side.  
+maxDistance, angleWeight, and minDistance are configurable in the Inspector. Angle of 0 is straight ahead and 90 is directly to the side.  
 
-*Figure 3 - Viewable distance with maximum set to 30*
+*Figure 3 - Viewable distance with maximum set to 30 and minimum set to 3*
 ![x viewableDistance](images/viewableDistance.png)  
 
 ### Explore attribute  
@@ -106,7 +106,7 @@ If a single object is found for the tag, the tag is considered found.  These are
 *AmmoDistance* - 1000=not found, 100=far, 0=near  
 *WeaponDistance* - 1000=not found, 100=far, 0=near  
 *AmbushDistance* - 1000=not found, 100=far, 0=near  
-There is also a location Variable for each of the above, e.g. PlayerLocation
+There is also a location Vector3 Variable for each of the above, e.g. PlayerLocation
 
 *Explore* - 100=100% of target types unfound, 0=0% of target types unfound.  
 
