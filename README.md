@@ -57,7 +57,7 @@ The second attribute is distance to the healthpack.  Note that an upper bound of
 Since the Utility Selector chooses the task with the highest values, you sometimes need to reverse the scale for  an attribute to have it increase utility.  For example, as a player’s health gets lower, you might want to give a higher result for getting a healthpack.  You can do this by assigning a negative weight.  This is handled as a special case that reverses the scale (100-value) and applies the absolute value of the weight.  Use a negative weight on distance when you want the score to be higher when you are closer, use a negative weight on health when you want the score to be higher when you are weaker, etc. 
 
 ### Upper and Lower Bounds
-You can also specify that an attribute MUST be lower than a upper bound or greater than a lower bound.  If the attribute does not fall in those bounds a score of zero is returned regardless of any other attributes.  For example, you can configure that playerDistance must be lower than 8 for a Melee attack or else return 0.  
+You can also specify that an attribute MUST be lower than a upper bound or greater than a lower bound.  If the attribute does not fall in those bounds a score of zero is returned regardless of any other attributes.  For example, you can configure that playerDistance must be lower than 3 for a Melee attack or else return 0.  
 *Note 1: The bound is checked *without* reversing the scale.*  
 *Note 2: Upper bound and lower bounds of zero are ignored.*    
 
