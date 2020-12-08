@@ -62,7 +62,7 @@ You can also specify that an attribute MUST be lower than a upper bound or great
 *Note 2: Upper bound and lower bounds of zero are ignored.*    
 
 ### Success Status of Child Task  
-**TODO** - This monitors the Success/Failure status of the child activity.  If the child activity fails, the score is reduced for the next N ticks.  For example, a "Flee Player" task is called but the agent cannot move further from player and the task returns fail, or a "Pickup Item" task is called but the Agent is unable to pick up the item.
+**TODO** - :no_entry_sign: This monitors the Success/Failure status of the child activity.  If the child activity fails, the score is reduced for the next N ticks.  For example, a "Flee Player" task is called but the agent cannot move further from player and the task returns fail, or a "Pickup Item" task is called but the Agent is unable to pick up the item.
 
 ### Setup  
 1. Ensure you can run the demoes in Opsvive's Behavior Designer https://opsive.com/support/documentation/behavior-designer/integrations/opsive-character-controllers/  
