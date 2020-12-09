@@ -93,7 +93,7 @@ The calculation for degrees from 0-90 is the following (above 90 minDistance is 
 maxDistance, angleWeight, and minDistance are configurable in the Inspector. Angle of 0 is straight ahead and 90 is directly to the side.  
 
 *Figure 3 - Viewable distance with maximum set to 30 and minimum set to 3*
-
+![x viewableDistance](images/viewableDistance2.png)  
 
 ### Explore attribute  
 This also provides an *Explore attribute* which is based on how many key components haven't yet been found.  The higher this value, the more useful exploring is.    
