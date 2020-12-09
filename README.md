@@ -86,14 +86,14 @@ The distance component tracks the distance from the agent to objects that have t
 
 ### Field of Vision  
 Rather than having a fixed angle cutoff with an item either in or out of field of vision, this script allows objects toward the center of view to be visible further off, and objects off to the side must be closer to be visible.  This script also allows marks an item behind you as visible if it is close (anything within minDistance is visible even if behind you).  If DebugFlag is set, this will log the cutoff distance for each angle of field of vision.
-The calculation is the following:  
+The calculation for degrees from 0-90 is the following (above 90 minDistance is used):  
 
 *viewableDistance = Mathf.Max(maxDistance - (angle * angleWeight), minDistance)*  
 
 maxDistance, angleWeight, and minDistance are configurable in the Inspector. Angle of 0 is straight ahead and 90 is directly to the side.  
 
 *Figure 3 - Viewable distance with maximum set to 30 and minimum set to 3*
-![x viewableDistance](images/viewableDistance.png)  
+
 
 ### Explore attribute  
 This also provides an *Explore attribute* which is based on how many key components haven't yet been found.  The higher this value, the more useful exploring is.    
