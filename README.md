@@ -143,12 +143,11 @@ This also maintains the Anger score and increases the anger attribute in Attribu
 1. Add an Anger attribute to your agent’s Attribute Manager with min/max of 0,100 and set auto decrement (if you choose).  Set the initial value to zero for a passive agent and to 100 for an aggresive agent or any value in between.  
 
 # Troubleshooting  
-1. InventoryID must be unique for each player or agent.
 1. Behavior Designer installation - make sure you can successfully run the BD demoes.
-1. Debug info - In the Behavior Designer Inspector for the Task Score task, enable the magnifying glass on "Sc".  This will display the realtime value of the task score on the Behavior Diagram.
+1. Debug info - In the Behavior Designer Inspector for the Task Score task, enable the magnifying glass on "Sc".  This will display the value of the task score on the Behavior Diagram.
 1. Debug info - For each script, enable DebugFlag to log debugging information.
 1. Tags - All the game objects you want to track must have a tag (weapon, player, healthpack, etc) for the distance calculator.  Make sure the player is tagged, healthpacks are tagged, weapons are tagged.  The weapon names must match a name listed in WeaponDict in FPSVariables.cs. For a pickup item, the tag MUST be applied to the item with the pickup script.** 
-1. Reverse Scale - Use a Reverse Scale (negative weight) if you want a high score for a *close* distance, *weak* health etc.  **Most  items will need a reverse score and use negative weights.** Double check any items with positive weight.
+1. Reverse Scale - Use a Reverse Scale (negative weight) if you want a high score for a *close* distance, *weak* health etc.  **Most  items will use a reverse score (negative weights).** Double check any items with positive weight.
 1. Bounds - Set upper/lower bounds for scores where appropriate.  For example, attack player should have a minimum ammo greater than zero.  With zero ammo it will generate a very low score but that might still be the best score available.  
 1. Weights - The sum of the weights should be equal to 1.0f for a high priority task, 0.9f for medium priority, and 0.8f for a low priority activity.  If you add a variable for weighting make sure it is normalized to 0.0f to 100.0f.
 1. Action - The action under a task, *MUST end up altering at least one of the scores for that task* otherwise you will get stuck running the same task.
