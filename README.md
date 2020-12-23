@@ -1,5 +1,6 @@
 # Task Score
-**Task Score** provides a score for an activity in a Unity game to the Opsive Behavior Designer (BD) **Utility Selector** based on weighted attributes that you configure. For each activity, you configure which attributes to use and how much to weight each attribute. The BD Utility Selector then runs the activity with the highest Task Score.   For example, a Retrieve HealthPack Task Score could be configured with a high weighting for poor health and a HealthPack being nearby.  As the health rating gets worse, the Retrieve HealthPack score gets higher and if there is a healthpack nearby becomes the highest rated task for the Utility Selector.  Using weighted attribute task scores can be easier and provide more natural behavior for an agent's decisions rather than having a complex tree of binary decisions for every case. *NOTE: These components require Opsive Behavior Designer but are not affiliated with Opsive or supported by Opsive.*
+**Task Score** provides a score for an activity in a Unity game to the Opsive Behavior Designer (BD) **Utility Selector** based on weighted attributes that you configure. For each activity, you configure which attributes to use and how much to weight each attribute. The BD Utility Selector then runs the activity with the highest Task Score.   For example, a Retrieve HealthPack Task Score could be configured with a high weighting for poor health and a HealthPack being nearby.  As the health rating gets worse, the Retrieve HealthPack score gets higher and if there is a healthpack nearby becomes the highest rated task for the Utility Selector.  Using weighted attribute task scores can be easier and provide more natural behavior for an agent's decisions rather than having a complex tree of binary decisions for every case. *NOTE: These components require Opsive Behavior Designer but are not affiliated with Opsive or supported by Opsive.*  
+:no_entry_sign: Indicates a feature has not yet been implemented  
 
 ### Table of Contents
 **[Overview of Components](#Overview-of-Components)**<br>
@@ -155,6 +156,6 @@ This also maintains the Anger score and increases the anger attribute in Attribu
 1. Default Task - You should have one Task which will run when everything else has a low score. This task should not have any upper or lower bounds.
 1. NavMesh - Make sure you have an up to date bake of the AI Navmesh for your scene.
 1. Utility Selector - The Task Score tasks MUST be connected to a **Utility Selector** task.  
-1. **TODO** Use the spreadsheet below to determine optimal weights.  The spreadsheet allows you to enter all the tasks and will calculate their score as you change variable values.
+1. **TODO** :no_entry_sign: Use the spreadsheet below to determine optimal weights.  The spreadsheet allows you to enter all the tasks and will calculate their score as you change variable values.
 
 *Copyright 2020 Michael Herbert*
