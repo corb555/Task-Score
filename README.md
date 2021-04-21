@@ -63,7 +63,7 @@ You can also specify that an attribute MUST be *lower* than a upper bound or *gr
 *Note 2: Upper bound and lower bounds of zero are ignored.*    
 
 ### Success Status of Child Task  
-**TODO** - :no_entry_sign: This monitors the Success/Failure status of the child activity.  If the child activity fails, the score is reduced for the next N ticks.  For example, a "Flee Player" task is called but the agent cannot move further from player and the task returns fail, or a "Pickup Item" task is called but the Agent is unable to pick up the item.
+The Success/Failure of the child activity is monitored.  If the child activity fails, the score is reduced for the next N seonds.  For example, a "Flee Player" task is called but the agent cannot move further from player and the task returns fail, or a "Pickup Item" task is called but the Agent is unable to pick up the item.
 
 ### Setup  
 1. Ensure you can run the demos in Opsvive's Behavior Designer https://opsive.com/support/documentation/behavior-designer/integrations/opsive-character-controllers/  
@@ -82,7 +82,7 @@ This script determines if each object is visible by the agent and if visible, th
 
 ### Tags
 The distance component tracks the distance from the agent to objects that have the tags you have added in the Inspector.  For an FPS these
-might be something like:  *healthpack, player, ammo, weapon, ambush*  
+might be something like:  *healthpack, player, ammo, weapon, etc. 
 
 ### Field of Vision  
 Rather than having a fixed angle cutoff with an item either in or out of field of vision, this script allows objects toward the center of view to be visible further off, and objects off to the side must be closer to be visible.  This script also allows marks an item behind you as visible if it is close (anything within minDistance is visible even if behind you).  If DebugFlag is set, this will log the cutoff distance for each angle of field of vision.
@@ -155,4 +155,4 @@ This also maintains the Anger score and increases the anger attribute in Attribu
 7. Utility Selector - The Task Score tasks MUST be connected to a **Utility Selector** task.  
 8. **TODO** :no_entry_sign: Use the spreadsheet below to determine optimal weights.  The spreadsheet allows you to enter all the tasks and will calculate their score as you change variable values.
 
-*Copyright 2020 Michael Herbert*
+*Copyright 2021 Michael Herbert*
