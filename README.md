@@ -38,7 +38,7 @@ We have two tasks to score and decide which to run:  1) Seek Healthpack, and 2) 
 *Task Score for “Seek Heathpack”*  
 Task Score weights for this were configured to:  Health= -0.6, HealthPackDistance=-0.4  
 
-(Note the Health score is reversed to 80 because the weight is negative (see Reverse Scale below).  The lower our health, the higher we want the score.  Distance is also reversed to reward being closer, not distant. 
+(Note the Health score is reversed to 80 because the weight is negative (see Reverse Scale below).  The lower our health, the higher we want the score.  Distance is also reversed to reward being closer, not distant.   
 **Score= 76** = (80 * 0.6) + (70 * 0.4)      
   
 *Task Score for “Attack Player”*  
