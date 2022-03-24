@@ -76,17 +76,17 @@ The Success/Failure of the child activity is monitored.  If the child activity f
 1.  You must have the same number of entries for the weights, and upper and lower bounds.
 
 # Distance Script  
-The Distance script tracks the distance from the agent to objects that have the tags you have added in the Inspector and tracks their current location.  
+The Distance script tracks the distance from the agent to all objects that have the tags you have added in the Inspector and tracks their current location.  
 It updates BD Global Variables with the same name (with Distance appended and Location appended).  
 *A tag MUST be applied to game objects you want to track*  
 *For a pickup item, the tag MUST be applied to the item that has the pickup script.*  
-This script determines if each object is visible by the agent and if visible, that object is considered "found". If an object has not been seen for N seconds *and is not static*, the "found" flag is cleared and distance is marked unknown.  The script calculates the distance to all currently "found" objects.  A tag (e.g. Healthpack) can have multiple objects, and the distance will be for the closest object with that tag.   0=close, 100=far. *NOTE: 1000 is returned for not known.*  This is an exception to the 0-100 range guideline and will create very high scores for not found items, which will likely make a task using that distance unlikely to run.  A task can also set an upper limit of 100 so it will not run for items that have not been found.  The Distance script also stores the location of each known object.  The location is NOT cleared when an item is no longer visible.  Only the Distance variable should be used to determine visibility.
+This script determines if each object is visible by the agent and if visible, that object is considered "found". The "found" flag is cleared and distance is marked unknown if an object has not been seen for N seconds *and the object is not static*.  The script calculates the distance to all currently "found" objects.  A tag (e.g. Healthpack) can have multiple objects, and the distance will be for the closest object with that tag.   Distance is normalized from 0 to 100, 0=close, 100=far. *NOTE: 1000 is returned for objects that haven't been found.*  This will create very high scores for not found items, which will  make a task using that distance unlikely to run.  A task can also set an upper limit of 100 so it will not run for items that have not been found.  The Distance script also stores the location of each known object.  The location is NOT cleared when an item is no longer visible.  Only the Distance variable should be used to determine visibility.
 
 ### Tags
 The distance component tracks the distance from the agent to objects that have the tags you have added in the Inspector.  For an FPS these
 might be something like:  *healthpack, player, ammo, weapon, etc. 
 
-### Field of Vision  
+### Field of Vision fall off
 Rather than having a fixed angle cutoff with an item either in or out of field of vision, this script allows objects toward the center of view to be visible further off, and objects off to the side must be closer to be visible.  This script also allows marks an item behind you as visible if it is close (anything within minDistance is visible even if behind you).  If DebugFlag is set, this will log the cutoff distance for each angle of field of vision.
 The calculation for degrees from 0-90 is the following (above 90 minDistance is used):  
 
