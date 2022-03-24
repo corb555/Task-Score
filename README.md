@@ -147,12 +147,12 @@ This also maintains the Anger score and increases the anger attribute in Attribu
 1. Debug info - For each script, enable DebugFlag to log debugging information.
 1. Tags - All the game objects you want to track must have a tag (weapon, player, healthpack, etc) for the distance calculator.  Make sure the player is tagged, healthpacks are tagged, weapons are tagged.  The weapon names must match a name listed in WeaponDict in FPSVariables.cs. For a pickup item, the tag MUST be applied to the item with the pickup script.** 
 1. Reverse Scale - Use a Reverse Scale (negative weight) if you want a high score for a *close* distance, *weak* health etc.  **Most  items will use a reverse score (negative weights).** Double check any items with positive weight.
-1. Bounds - Set upper/lower bounds for scores where appropriate.  For example, attack player should have a minimum ammo greater than zero.  With zero ammo it will generate a very low score but that might still be the best score available.  
+1. Bounds - Set upper/lower bounds for scores where appropriate.  For example, attack player should have a minimum ammo greater than zero.  With zero ammo it will generate a low score but that might still be the best score available.  This state will cause an attack, which will do nothing and will likely be chosen again.
 1. Weights - The sum of the weights should be equal to 1.0f for a high priority task, 0.9f for medium priority, and 0.8f for a low priority activity.  
 2. New Variables - If you add your own variable in FPSVariables for weighting make sure it is normalized from 0.0f to 100.0f.
 3. Action - The action under a task, *MUST end up altering at least one of the scores for that task* otherwise you will get stuck running the same task.
 4. Targets - Make sure that Seek and Flee have been set up to have correct targets.
-5. Default Task - You should have one Task which will run when everything else has a low score. This task should not have any upper or lower bounds.
+5. Default Task - You should have one Task which will run when everything else has a low score. This task should not have any upper or lower bounds.  This might be an explore task.
 6. NavMesh - Make sure you have an up to date bake of the AI Navmesh for your scene.
 7. Utility Selector - The Task Score tasks MUST be connected to a **Utility Selector** task.  
 8. **TODO** :no_entry_sign: Use the spreadsheet below to determine optimal weights.  The spreadsheet allows you to enter all the tasks and will calculate their score as you change variable values.
