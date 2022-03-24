@@ -133,7 +133,7 @@ This also maintains the Anger score and increases the anger attribute in Attribu
 *WeaponStrength* -  0 none, 100=most powerful weapon.  Power of equipped weapon. For example: 40 Club, 60 Knife, 65 Sword, 95 Rocket Launcher  
 *MeleeWeapons* - :no_entry_sign: 0 none, 100=most powerful weapon.  Power of equipped weapon. For example: 40 Club, 60 Knife, 65 Sword.  
 *RangeWeapons* - :no_entry_sign: 0 none, 100=most powerful weapon.  Power of equipped weapon. For example:  75 Pistol, 85 Assault Rifle 95 Rocket Launcher.      
-*Ammo* - 100=full, 0=empty.  *Note: this is the percent of "adequate" ammunition, not the number of bullets.*  A rocket launcher with 12 rockets would return a score of 100.  An assault rifle with 12 bullets would return a score of 5.
+*Ammo* - 100=full, 0=empty.  *Note: this is the percent of "adequate" ammunition, not the number of bullets.*  A rocket launcher with 10 rockets would return a score of 100 while an assault rifle with 10 bullets would return a score of 30.
 
 ### Setup  
 1. Copy the FPSVariables.cs script to your assets and add it to your agent.
